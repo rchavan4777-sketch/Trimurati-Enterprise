@@ -1,3 +1,5 @@
+export const dynamic = "force-static";
+
 import { services, siteConfig } from "@/data/site";
 
 export default function sitemap() {
@@ -17,5 +19,3 @@ export default function sitemap() {
 
   return [...staticRoutes, ...serviceRoutes];
 }
-
-

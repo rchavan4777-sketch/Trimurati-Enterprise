@@ -1,3 +1,5 @@
+export const dynamic = "force-static";
+
 import { siteConfig } from "@/data/site";
 
 export default function robots() {
@@ -9,5 +11,3 @@ export default function robots() {
     sitemap: `${siteConfig.url}/sitemap.xml`
   };
 }
-
-
