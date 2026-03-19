@@ -1,3 +1,5 @@
+export const dynamic = "force-static";
+
 export default function manifest() {
   return {
     name: "Trimurti Enterprise",
@@ -10,5 +12,3 @@ export default function manifest() {
     icons: []
   };
 }
-
-
