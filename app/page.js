@@ -4,6 +4,7 @@ import { MediaFrame } from "@/components/media";
 import { StructuredData } from "@/components/structured-data";
 import { WhatsAppFloat } from "@/components/whatsapp-float";
 import { featuredServices, homeImages, homeStats, siteConfig } from "@/data/site";
+import { FadeIn, SlideIn, StaggerContainer, StaggerItem } from "@/components/motion";
 
 export default function HomePage() {
   const schema = {
@@ -19,7 +20,7 @@ export default function HomePage() {
       <StructuredData data={schema} />
       <section className="section">
         <div className="container hero-grid">
-          <div>
+          <SlideIn direction="left">
             <span className="eyebrow">Infrastructure Excellence</span>
             <h1 className="display">Building <em>Foundations.</em><br />Breaking Barriers.</h1>
             <p className="lede" style={{ maxWidth: "38rem", marginTop: "1.5rem" }}>
@@ -30,46 +31,46 @@ export default function HomePage() {
               <Link href="/services" className="button">Our Projects</Link>
               <Link href="/contact" className="button-secondary">Partner With Us</Link>
             </div>
-          </div>
-          <div className="hero-art">
+          </SlideIn>
+          <SlideIn direction="right" className="hero-art">
             <MediaFrame src={homeImages.hero} alt="Modern concrete building facade" className="hero-frame" priority />
-          </div>
+          </SlideIn>
         </div>
       </section>
       <section className="section stats-band">
-        <div className="container">
-          <div className="card-grid">
+        <FadeIn className="container">
+          <StaggerContainer className="card-grid">
             {homeStats.map((stat) => (
-              <div key={stat.label} className="stat-card">
+              <StaggerItem key={stat.label} className="stat-card">
                 <strong>{stat.value}</strong>
                 <span>{stat.label}</span>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
-        </div>
+          </StaggerContainer>
+        </FadeIn>
       </section>
       <section className="section">
         <div className="container">
-          <div className="section-heading">
+          <FadeIn className="section-heading">
             <div>
               <span className="eyebrow">Our Expertise</span>
               <h2 className="headline">Comprehensive Industrial <em>Solutions</em></h2>
             </div>
-          </div>
-          <div className="card-grid">
+          </FadeIn>
+          <StaggerContainer className="card-grid">
             {featuredServices.map((service) => (
-              <article key={service.title} className="service-card">
+              <StaggerItem key={service.title} className="service-card">
                 <div className="service-icon"><Icon name={service.icon} /></div>
                 <h3>{service.title}</h3>
                 <p>{service.text}</p>
-              </article>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
       <section className="section section--soft">
         <div className="container split-grid">
-          <article className="resource-card">
+          <SlideIn direction="up" className="resource-card">
             <div style={{ position: "relative", aspectRatio: "16 / 10" }}>
               <MediaFrame src={homeImages.crusher} alt="Stone crusher division" className="image-frame" />
             </div>
@@ -78,8 +79,8 @@ export default function HomePage() {
               <p>Our automated crushing plants process premium igneous rock into graded aggregates essential for high-strength concrete and road sub-base.</p>
               <div style={{ marginTop: "1.2rem" }}><Link href="/services" className="button-ghost">Explore Inventory <Icon name="arrow" /></Link></div>
             </div>
-          </article>
-          <article className="resource-card">
+          </SlideIn>
+          <SlideIn direction="up" delay={0.2} className="resource-card">
             <div style={{ position: "relative", aspectRatio: "16 / 10" }}>
               <MediaFrame src={homeImages.transport} alt="Industrial transport trucks" className="image-frame" />
             </div>
@@ -88,16 +89,16 @@ export default function HomePage() {
               <p>Equipped with a diverse fleet of heavy payload vehicles and real-time tracking, your materials reach site precisely on schedule.</p>
               <div style={{ marginTop: "1.2rem" }}><Link href="/contact" className="button-ghost">View Fleet <Icon name="arrow" /></Link></div>
             </div>
-          </article>
+          </SlideIn>
         </div>
       </section>
       <section className="section">
-        <div className="container" style={{ textAlign: "center" }}>
+        <FadeIn className="container" style={{ textAlign: "center" }}>
           <span className="eyebrow">Government Certified A-Class Contractor</span>
           <h2 className="headline" style={{ maxWidth: "40rem", margin: "1rem auto 0" }}>
             Trusted by major metropolitan infrastructure projects nationwide.
           </h2>
-        </div>
+        </FadeIn>
       </section>
       <WhatsAppFloat />
     </>
