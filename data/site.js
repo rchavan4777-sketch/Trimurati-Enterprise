@@ -3,14 +3,14 @@ export const siteConfig = {
   url: "https://www.trimurtienterprise.com",
   description:
     "Trimurti Enterprise delivers infrastructure materials, transport logistics, hard rock blasting, and civil execution support for large-scale industrial projects across India.",
-  phone: "+91 98765 43210",
-  email: "info@trimurtienterprise.com",
-  whatsapp: "919876543210",
+  phone: "+91 9082433849",
+  email: "trimurtienterprises4726@gmail.com",
+  whatsapp: "919082433849",
   address: {
-    street: "102 Archway Plaza, Industrial District",
-    city: "Pune",
+    street: "Khadakpada Genreral Arun Kumar Vaidya Marg, Goregaon East",
+    city: "Mumbai",
     region: "Maharashtra",
-    postalCode: "400001"
+    postalCode: "40065"
   },
   socials: [
     { label: "LinkedIn", href: "https://www.linkedin.com" },

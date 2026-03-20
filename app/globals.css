@@ -87,9 +87,12 @@ button, input, select, textarea { font: inherit; }
 .field label { font-size: .75rem; text-transform: uppercase; letter-spacing: .14em; color: #757681; font-weight: 700; }
 .field input, .field select, .field textarea { width: 100%; border: 0; border-bottom: 2px solid rgba(206,217,255,1); background: var(--surface-low); padding: 1rem; color: var(--foreground); border-radius: 14px 14px 0 0; outline: none; }
 .field input:focus, .field select:focus, .field textarea:focus { border-bottom-color: var(--primary); }
-.whatsapp-card { background: #16a34a; color: white; }
+.whatsapp-card { background: #16a34a; color: white; display: flex; align-items: center; justify-content: space-between; gap: .85rem; padding: 1rem 1.25rem; min-height: 0; }
+.whatsapp-card .mini-icon { width: 2.4rem; height: 2.4rem; border-radius: 12px; }
+.whatsapp-card strong { font-size: 1rem; }
+.whatsapp-card svg { width: 1.3rem; height: 1.3rem; }
 .map-card { position: relative; min-height: 20rem; overflow: hidden; border-radius: 24px; }
-.map-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(250,248,255,.2), rgba(13,26,57,.08)); }
+.map-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(250,248,255,.2), rgba(13,26,57,.08)); pointer-events: none; }
 .map-card__badge { position: absolute; inset: auto auto 2rem 2rem; z-index: 1; background: rgba(250,248,255,.9); }
 .cta-panel { position: relative; overflow: hidden; border-radius: 28px; padding: 3rem; background: linear-gradient(135deg, rgba(132,153,224,.9), rgba(70,91,158,.75)); color: #102250; }
 .cta-panel::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at center, rgba(255,255,255,.18), transparent 52%); }

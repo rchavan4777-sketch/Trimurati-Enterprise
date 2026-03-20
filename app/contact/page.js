@@ -40,7 +40,29 @@ export default function ContactPage() {
             <article className="contact-card panel"><div className="mini-icon"><Icon name="location" /></div><h3 style={{ marginTop: 0 }}>Our Headquarters</h3><p>{siteConfig.address.street}, {siteConfig.address.city}, {siteConfig.address.region} {siteConfig.address.postalCode}</p></article>
             <article className="contact-card panel"><div className="mini-icon"><Icon name="call" /></div><h3 style={{ marginTop: 0 }}>Phone &amp; Support</h3><p>{siteConfig.phone}</p><p>Mon - Fri, 9:00 AM - 6:00 PM</p><div className="mini-icon" style={{ marginTop: "1rem" }}><Icon name="mail" /></div><h3>Email</h3><p>{siteConfig.email}</p></article>
             <a className="contact-card whatsapp-card" href={`https://wa.me/${siteConfig.whatsapp}`}><div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "1rem" }}><div style={{ display: "flex", alignItems: "center", gap: "1rem" }}><span className="mini-icon" style={{ background: "rgba(255,255,255,.14)", color: "white", marginBottom: 0 }}><Icon name="chat" /></span><strong>Chat on WhatsApp</strong></div><Icon name="arrow" /></div></a>
-            <div className="map-card"><MediaFrame src={mapImage} alt="Map visualization of Trimurti Enterprise location" className="image-frame" /><div className="map-card__badge contact-card"><div style={{ display: "flex", alignItems: "center", gap: ".75rem" }}><span className="mini-icon" style={{ marginBottom: 0 }}><Icon name="location" /></span><strong>View Map Location</strong></div></div></div>
+            <div className="map-card">
+              <iframe
+                title="Trimurti Enterprise Location"
+                src="https://www.google.com/maps?q=19.174911,72.876675&output=embed"
+                width="100%"
+                height="320"
+                style={{ border: 0, borderRadius: "24px" }}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
+              <a
+                className="map-card__badge contact-card"
+                href="https://www.google.com/maps/place/19%C2%B010'29.7%22N+72%C2%B052'36.0%22E/@19.174911,72.876675,17z/data=!3m1!4b1!4m4!3m3!8m2!3d19.174911!4d72.876675!18m1!1e1"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div style={{ display: "flex", alignItems: "center", gap: ".75rem" }}>
+                  <span className="mini-icon" style={{ marginBottom: 0 }}><Icon name="location" /></span>
+                  <strong>View Map Location</strong>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
       </section>
