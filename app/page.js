@@ -1,9 +1,10 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Icon } from "@/components/icons";
 import { MediaFrame } from "@/components/media";
 import { StructuredData } from "@/components/structured-data";
 import { WhatsAppFloat } from "@/components/whatsapp-float";
-import { featuredServices, homeImages, homeStats, siteConfig } from "@/data/site";
+import { clients, featuredServices, homeImages, homeStats, siteConfig } from "@/data/site";
 import { FadeIn, SlideIn, StaggerContainer, StaggerItem } from "@/components/motion";
 
 export default function HomePage() {
@@ -14,6 +15,10 @@ export default function HomePage() {
     url: siteConfig.url,
     description: siteConfig.description
   };
+  const clientRows = [
+    clients.filter((_, index) => index % 2 === 0),
+    clients.filter((_, index) => index % 2 === 1)
+  ].filter((row) => row.length);
 
   return (
     <>
@@ -72,27 +77,49 @@ export default function HomePage() {
         </div>
       </section>
       <section className="section section--soft">
-        <div className="container split-grid">
-          <SlideIn direction="up" className="resource-card">
-            <div style={{ position: "relative", aspectRatio: "16 / 10" }}>
-              <MediaFrame src={homeImages.crusher} alt="Stone crusher division" className="image-frame" />
-            </div>
-            <div className="resource-card__body">
-              <h3>Stone Crusher Division</h3>
-              <p>Our automated crushing plants process premium igneous rock into graded aggregates essential for high-strength concrete and road sub-base.</p>
-              <div style={{ marginTop: "1.2rem" }}><Link href="/services" className="button-ghost">Explore Inventory <Icon name="arrow" /></Link></div>
-            </div>
-          </SlideIn>
-          <SlideIn direction="up" delay={0.2} className="resource-card">
-            <div style={{ position: "relative", aspectRatio: "16 / 10" }}>
-              <MediaFrame src={homeImages.transport} alt="Industrial transport trucks" className="image-frame" />
-            </div>
-            <div className="resource-card__body">
-              <h3>Logistics &amp; Transport</h3>
-              <p>Equipped with a diverse fleet of heavy payload vehicles and real-time tracking, your materials reach site precisely on schedule.</p>
-              <div style={{ marginTop: "1.2rem" }}><Link href="/contact" className="button-ghost">View Fleet <Icon name="arrow" /></Link></div>
-            </div>
-          </SlideIn>
+        <div className="container">
+          <FadeIn className="section-heading center">
+            <span className="eyebrow">Trusted By Industry Leaders</span>
+            <h2 className="headline" style={{ marginTop: "1rem" }}>
+              Clients Who Build at <em>Scale</em>
+            </h2>
+            <p className="muted" style={{ maxWidth: "46rem", margin: "1.2rem auto 0" }}>
+              Our materials, execution support, and rock engineering services have supported leading
+              developers, EPC contractors, and infrastructure partners across major projects.
+            </p>
+          </FadeIn>
+          <div className="client-marquee" aria-label="Client logos and names">
+            {clientRows.map((row, rowIndex) => (
+              <div
+                key={`client-row-${rowIndex}`}
+                className={`client-marquee__row${rowIndex % 2 === 1 ? " client-marquee__row--reverse" : ""}`}
+              >
+                <div className="client-marquee__track">
+                  {[0, 1].map((copyIndex) => (
+                    <div
+                      key={`client-group-${rowIndex}-${copyIndex}`}
+                      className="client-marquee__group"
+                      aria-hidden={copyIndex === 1}
+                    >
+                      {row.map((client) => (
+                        <article key={`${client.name}-${rowIndex}-${copyIndex}`} className="client-card">
+                          <div className="client-card__logo">
+                            <Image
+                              src={client.logo}
+                              alt={client.alt}
+                              fill
+                              sizes="(max-width: 720px) 74vw, (max-width: 980px) 38vw, 17rem"
+                            />
+                          </div>
+                          <p>{client.name}</p>
+                        </article>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
       <section className="section">
