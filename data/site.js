@@ -6,6 +6,7 @@ export const siteConfig = {
   phone: "+91 9082433849",
   email: "trimurtienterprises4726@gmail.com",
   whatsapp: "919082433849",
+  workingHours: "Monday to Saturday, 9:00 AM to 10:00 PM",
   address: {
     street: "Khadakpada Genreral Arun Kumar Vaidya Marg, Goregaon East",
     city: "Mumbai",
@@ -26,9 +27,10 @@ export const navigation = [
 ];
 
 export const homeStats = [
-  { value: "250+", label: "Active Projects" },
-  { value: "1.2k", label: "Happy Clients" },
-  { value: "15+", label: "Years Experience" }
+  { value: "20+", label: "Active Projects" },
+  { value: "250+", label: "Complete Projects" },
+  { value: "20+", label: "Year Experience" },
+  { value: "100%", label: "Safety Record" }
 ];
 
 export const services = [
@@ -245,9 +247,9 @@ export const resources = [
 ];
 
 export const contactStats = [
-  { value: "15+", label: "Years Experience" },
-  { value: "450+", label: "Projects Delivered" },
-  { value: "12", label: "Regions Covered" },
+  { value: "20+", label: "Active Projects" },
+  { value: "250+", label: "Complete Projects" },
+  { value: "20+", label: "Year Experience" },
   { value: "100%", label: "Safety Record" }
 ];
 
@@ -262,5 +264,7 @@ export const homeImages = {
   transport:
     "https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=1200&q=80"
 };
+
+
 
 

@@ -2,7 +2,7 @@ import { Icon } from "@/components/icons";
 import { MediaFrame } from "@/components/media";
 import { StructuredData } from "@/components/structured-data";
 import { WhatsAppFloat } from "@/components/whatsapp-float";
-import { contactStats, mapImage, siteConfig } from "@/data/site";
+import { contactStats, siteConfig } from "@/data/site";
 
 export const metadata = {
   title: "Contact",
@@ -38,7 +38,7 @@ export default function ContactPage() {
           </article>
           <div style={{ display: "grid", gap: "1.25rem" }}>
             <article className="contact-card panel"><div className="mini-icon"><Icon name="location" /></div><h3 style={{ marginTop: 0 }}>Our Headquarters</h3><p>{siteConfig.address.street}, {siteConfig.address.city}, {siteConfig.address.region} {siteConfig.address.postalCode}</p></article>
-            <article className="contact-card panel"><div className="mini-icon"><Icon name="call" /></div><h3 style={{ marginTop: 0 }}>Phone &amp; Support</h3><p>{siteConfig.phone}</p><p>Mon - Fri, 9:00 AM - 6:00 PM</p><div className="mini-icon" style={{ marginTop: "1rem" }}><Icon name="mail" /></div><h3>Email</h3><p>{siteConfig.email}</p></article>
+            <article className="contact-card panel"><div className="mini-icon"><Icon name="call" /></div><h3 style={{ marginTop: 0 }}>Phone &amp; Support</h3><p>{siteConfig.phone}</p><p>{siteConfig.workingHours}</p><div className="mini-icon" style={{ marginTop: "1rem" }}><Icon name="mail" /></div><h3>Email</h3><p>{siteConfig.email}</p></article>
             <a className="contact-card whatsapp-card" href={`https://wa.me/${siteConfig.whatsapp}`}><div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "1rem" }}><div style={{ display: "flex", alignItems: "center", gap: "1rem" }}><span className="mini-icon" style={{ background: "rgba(255,255,255,.14)", color: "white", marginBottom: 0 }}><Icon name="chat" /></span><strong>Chat on WhatsApp</strong></div><Icon name="arrow" /></div></a>
             <div className="map-card">
               <iframe
@@ -71,5 +71,7 @@ export default function ContactPage() {
     </>
   );
 }
+
+
 
 

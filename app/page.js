@@ -31,6 +31,9 @@ export default function HomePage() {
               <Link href="/services" className="button">Our Projects</Link>
               <Link href="/contact" className="button-secondary">Partner With Us</Link>
             </div>
+            <p style={{ marginTop: "1rem", color: "var(--muted)", fontWeight: 600 }}>
+              {siteConfig.workingHours}
+            </p>
           </SlideIn>
           <SlideIn direction="right" className="hero-art">
             <MediaFrame src={homeImages.hero} alt="Modern concrete building facade" className="hero-frame" priority />
@@ -104,5 +107,6 @@ export default function HomePage() {
     </>
   );
 }
+
 
 
