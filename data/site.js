@@ -33,6 +33,18 @@ export const homeStats = [
   { value: "100%", label: "Safety Record" }
 ];
 
+export const clients = [
+  { name: "Afcons", logo: "/images/clients/afcons.jpeg", alt: "Afcons logo" },
+  { name: "Arihant Superstructures Ltd.", logo: "/images/clients/Arihant.jpeg", alt: "Arihant Superstructures logo" },
+  { name: "Chandak", logo: "/images/clients/chandak.jpeg", alt: "Chandak logo" },
+  { name: "HCC", logo: "/images/clients/hcc.jpeg", alt: "HCC logo" },
+  { name: "Lodha", logo: "/images/clients/lodha.jpeg", alt: "Lodha logo" },
+  { name: "L&T", logo: "/images/clients/LT.jpeg", alt: "L&T logo" },
+  { name: "Raheja Realty", logo: "/images/clients/raheja.jpeg", alt: "Raheja Realty logo" },
+  { name: "Shirke", logo: "/images/clients/shirke.jpeg", alt: "Shirke logo" },
+  { name: "Shapoorji Pallonji", logo: "/images/clients/SP.jpeg", alt: "Shapoorji Pallonji logo" }
+];
+
 export const services = [
   {
     slug: "hard-rock-control-blasting",
