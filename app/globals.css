@@ -30,7 +30,7 @@ button, input, select, textarea { font: inherit; }
 .lede, .muted { color: var(--muted); line-height: 1.8; }
 .topbar { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(20px); background: rgba(250,248,255,.82); border-bottom: 1px solid rgba(197,198,210,.18); }
 .topbar__inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 5rem; }
-.brand { font-weight: 800; font-size: 1.15rem; letter-spacing: -.03em; }
+.brand { font-weight: 800; font-size: 1.15rem; letter-spacing: -.03em; display: flex; align-items: center; gap: 0.6rem; }
 .nav { display: flex; align-items: center; gap: 1.75rem; }
 .nav__link { font-size: .78rem; text-transform: uppercase; letter-spacing: .15em; color: rgba(70,91,158,.72); padding-bottom: .3rem; border-bottom: 2px solid transparent; transition: color .2s ease,border-color .2s ease; }
 .nav__link:hover, .nav__link[aria-current="page"] { color: var(--primary); border-color: var(--primary-soft); }
@@ -107,7 +107,7 @@ button, input, select, textarea { font: inherit; }
 .client-marquee__row--reverse .client-marquee__track { animation-direction: reverse; animation-duration: 34s; }
 .client-marquee__group { display: flex; gap: var(--marquee-gap); flex: none; }
 .client-card { width: clamp(13rem, 20vw, 17rem); flex: none; display: grid; gap: .9rem; align-items: center; padding: 1rem; background: rgba(255,255,255,.96); border: 1px solid rgba(70,91,158,.12); border-radius: 22px; box-shadow: 0 16px 38px rgba(13,26,57,.06); }
-.client-card__logo { position: relative; height: 5.75rem; overflow: hidden; border-radius: 16px; background: linear-gradient(180deg, rgba(242,243,255,.9), rgba(255,255,255,.98)); }
+.client-card__logo { position: relative; height: 5.75rem; overflow: hidden; border-radius: 16px; background: transparent; }
 .client-card__logo img { object-fit: contain; padding: 1rem; }
 .client-card p { margin: 0; text-align: center; font-size: .92rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--foreground); }
 .client-marquee__row:hover .client-marquee__track { animation-play-state: paused; }

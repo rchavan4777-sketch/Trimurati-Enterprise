@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { navigation } from "@/data/site";
 
@@ -11,6 +12,7 @@ export function Header() {
     <header className="topbar">
       <div className="container topbar__inner">
         <Link href="/" className="brand">
+          <Image src="/TE.png" alt="Trimurti Enterprise Logo" width={42} height={42} style={{ objectFit: 'contain' }} priority />
           Trimurti Enterprise
         </Link>
         <nav className="nav" aria-label="Primary">
