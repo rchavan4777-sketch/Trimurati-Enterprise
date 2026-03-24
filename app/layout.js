@@ -12,6 +12,11 @@ export const metadata = {
   title: { default: siteConfig.name, template: `%s | ${siteConfig.name}` },
   description: siteConfig.description,
   applicationName: siteConfig.name,
+  icons: {
+    icon: [{ url: "/TE.png", type: "image/png" }],
+    shortcut: ["/TE.png"],
+    apple: [{ url: "/TE.png", type: "image/png" }]
+  },
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",

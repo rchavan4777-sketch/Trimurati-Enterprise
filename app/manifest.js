@@ -9,6 +9,22 @@ export default function manifest() {
     display: "standalone",
     background_color: "#faf8ff",
     theme_color: "#465b9e",
-    icons: []
+    icons: [
+      {
+        src: "/TE.png",
+        sizes: "192x192",
+        type: "image/png"
+      },
+      {
+        src: "/TE.png",
+        sizes: "512x512",
+        type: "image/png"
+      },
+      {
+        src: "/TE.png",
+        sizes: "any",
+        type: "image/png"
+      }
+    ]
   };
 }
