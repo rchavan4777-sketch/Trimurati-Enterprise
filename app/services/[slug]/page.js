@@ -1,44 +1,51 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import path from "node:path";
-import { readdir } from "node:fs/promises";
 import { Icon } from "@/components/icons";
 import { MediaFrame } from "@/components/media";
 import { StructuredData } from "@/components/structured-data";
 import { services, siteConfig } from "@/data/site";
 
-const SERVICE_FILE_PATTERNS = {
-  shotcrete: /SHOTCRETE/i,
-  "hard-rock-diamond-saw-cutting": /HARD\s*ROCK\s*DAIMOND\s*SAW\s*CUTTER/i,
-  "chemical-hard-rock-cracking": /CAMICAL\s*HARD\s*ROCK\s*CRACKING/i,
-  "manual-hard-rock-breaking": /MANUAL\s*HARD\s*ROCK\s*BRAKING/i,
-  "all-diameter-rockbolts": /ALL\s*DIA\s*ROCKBOLTS/i,
-  "steel-fabric-wiremesh-fixing": /FIXING\s*OF\s*STEEL\s*FABRIC\s*WIREMESH/i
+const SERVICE_LOCAL_IMAGES = {
+  "hard-rock-control-blasting": [
+    "/images/services/Hard Rock Control Blasting1.jpeg",
+    "/images/services/Hard Rock Control Blasting2.jpeg",
+    "/images/services/Hard Rock Control Blasting3.jpeg",
+    "/images/services/Hard Rock Control Blasting4.jpeg",
+    "/images/services/Hard Rock Control Blasting5.jpeg",
+    "/images/services/Hard Rock Control Blasting6.png",
+    "/images/services/Hard Rock Control Blasting7.png"
+  ],
+  shotcrete: [
+    "/images/services/SHOTCRETE1.jpeg",
+    "/images/services/SHOTCRETE2.jpeg",
+    "/images/services/SHOTCRETE3.jpeg"
+  ],
+  "hard-rock-diamond-saw-cutting": [
+    "/images/services/HARD ROCK DAIMOND SAW CUTTER1.jpeg",
+    "/images/services/HARD ROCK DAIMOND SAW CUTTER2.jpeg"
+  ],
+  "chemical-hard-rock-cracking": [
+    "/images/services/CAMICAL HARD ROCK CRACKING1.jpeg",
+    "/images/services/CAMICAL HARD ROCK CRACKING2.jpeg",
+    "/images/services/CAMICAL HARD ROCK CRACKING3.jpeg"
+  ],
+  "manual-hard-rock-breaking": [
+    "/images/services/MANUAL HARD ROCK BRAKING1.jpeg",
+    "/images/services/MANUAL HARD ROCK BRAKING2.jpeg",
+    "/images/services/MANUAL HARD ROCK BRAKING3.jpeg"
+  ],
+  "all-diameter-rockbolts": [
+    "/images/services/ALL DIA ROCKBOLTS1.jpeg",
+    "/images/services/ALL DIA ROCKBOLTS2.jpeg",
+    "/images/services/ALL DIA ROCKBOLTS3.jpeg"
+  ],
+  "steel-fabric-wiremesh-fixing": [
+    "/images/services/FIXING OF STEEL FABRIC  WIREMESH1.jpeg"
+  ]
 };
 
-async function getLocalServiceImages(slug) {
-  const pattern = SERVICE_FILE_PATTERNS[slug];
-
-  if (!pattern) {
-    return [];
-  }
-
-  try {
-    const folder = path.join(process.cwd(), "public", "images", "services");
-    const files = await readdir(folder);
-
-    const matched = files
-      .filter((file) => /\.(jpe?g|png|webp)$/i.test(file) && pattern.test(file))
-      .sort((a, b) => {
-        const aNum = Number(a.match(/(\d+)(?=\.[a-z]+$)/i)?.[1] ?? "0");
-        const bNum = Number(b.match(/(\d+)(?=\.[a-z]+$)/i)?.[1] ?? "0");
-        return aNum - bNum;
-      });
-
-    return matched.map((file) => `/images/services/${file}`);
-  } catch {
-    return [];
-  }
+function getLocalServiceImages(slug) {
+  return SERVICE_LOCAL_IMAGES[slug] ?? [];
 }
 
 export function generateStaticParams() {

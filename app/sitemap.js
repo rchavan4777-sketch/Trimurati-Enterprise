@@ -1,6 +1,6 @@
 export const dynamic = "force-static";
 
-import { services, siteConfig } from "@/data/site";
+import { materialServicePages, services, siteConfig } from "@/data/site";
 
 export default function sitemap() {
   const staticRoutes = ["", "/about", "/services", "/contact"].map((route) => ({
@@ -17,5 +17,12 @@ export default function sitemap() {
     priority: service.slug === "hard-rock-control-blasting" ? 0.9 : 0.7
   }));
 
-  return [...staticRoutes, ...serviceRoutes];
+  const materialServiceRoutes = materialServicePages.map((service) => ({
+    url: `${siteConfig.url}/services/materials/${service.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: service.children?.length ? 0.75 : 0.65
+  }));
+
+  return [...staticRoutes, ...serviceRoutes, ...materialServiceRoutes];
 }

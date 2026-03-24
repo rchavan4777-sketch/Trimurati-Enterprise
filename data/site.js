@@ -21,11 +21,169 @@ export const siteConfig = {
 
 export const navigation = [
   { label: "Home", href: "/" },
-  { label: "Services", href: "/services" },
+  {
+    label: "Services",
+    href: "/services",
+    children: [
+      {
+        label: "Infrastructure Services",
+        children: [
+          { label: "Hard Rock Control Blasting", href: "/services/hard-rock-control-blasting" },
+          { label: "Hard Rock Diamond Saw Cutting", href: "/services/hard-rock-diamond-saw-cutting" },
+          { label: "Chemical Hard Rock Cracking", href: "/services/chemical-hard-rock-cracking" },
+          { label: "Manual Hard Rock Breaking", href: "/services/manual-hard-rock-breaking" },
+          { label: "Splitter Rock Cracking", href: "/services/splitter-rock-cracking" },
+          { label: "Fixing of Steel Fabric / Wiremesh", href: "/services/steel-fabric-wiremesh-fixing" },
+          { label: "All Diameter Rockbolts", href: "/services/all-diameter-rockbolts" },
+          { label: "Shotcrete", href: "/services/shotcrete" }
+        ]
+      },
+      {
+        label: "Trimurti Stone Crusher",
+        href: "/services/materials/trimurti-stone-crusher",
+        children: [
+          { label: "20 mm", href: "/services/materials/stone-crusher-20-mm" },
+          { label: "M.Sand", href: "/services/materials/stone-crusher-m-sand" },
+          { label: "Plaster Sand", href: "/services/materials/stone-crusher-plaster-sand" }
+        ]
+      },
+      {
+        label: "Trimurti Transport",
+        href: "/services/materials/trimurti-transport",
+        children: [
+          { label: "Rubble", href: "/services/materials/transport-rubble" },
+          { label: "Metal 10/20", href: "/services/materials/transport-metal-10-20" },
+          { label: "M.Sand", href: "/services/materials/transport-m-sand" },
+          { label: "Plaster Sand", href: "/services/materials/transport-plaster-sand" }
+        ]
+      }
+    ]
+  },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" }
 ];
 
+export const materialServicePages = [
+  {
+    slug: "trimurti-stone-crusher",
+    title: "Trimurti Stone Crusher",
+    group: "Stone Crusher Division",
+    description: "Engineered aggregate production with strict quality grading for infrastructure and construction projects.",
+    icon: "crusher",
+    points: [
+      "Consistent grading and size control",
+      "High-volume output for project continuity",
+      "Tested quality for structural reliability"
+    ],
+    children: [
+      { label: "20 mm", href: "/services/materials/stone-crusher-20-mm" },
+      { label: "M.Sand", href: "/services/materials/stone-crusher-m-sand" },
+      { label: "Plaster Sand", href: "/services/materials/stone-crusher-plaster-sand" }
+    ]
+  },
+  {
+    slug: "stone-crusher-20-mm",
+    title: "20 mm Aggregate",
+    group: "Trimurti Stone Crusher",
+    description: "High-strength 20 mm graded aggregate for concrete works, foundations, and heavy-load structural applications.",
+    icon: "foundation",
+    points: [
+      "Uniform particle size distribution",
+      "Suitable for RCC and structural concrete",
+      "Reliable supply for large project demand"
+    ]
+  },
+  {
+    slug: "stone-crusher-m-sand",
+    title: "M.Sand",
+    group: "Trimurti Stone Crusher",
+    description: "Manufactured sand processed for consistent grading, clean texture, and dependable construction performance.",
+    icon: "arch",
+    points: [
+      "Controlled fines for workability",
+      "Ideal for block work and concrete mix",
+      "Clean and quality-checked source"
+    ]
+  },
+  {
+    slug: "stone-crusher-plaster-sand",
+    title: "Plaster Sand",
+    group: "Trimurti Stone Crusher",
+    description: "Fine, well-graded plaster sand for smooth wall finishing and high-quality surface texture.",
+    icon: "spark",
+    points: [
+      "Fine texture for smooth finish",
+      "Low impurity and dust control",
+      "Consistent quality across batches"
+    ]
+  },
+  {
+    slug: "trimurti-transport",
+    title: "Trimurti Transport",
+    group: "Transport Division",
+    description: "Dedicated bulk logistics with disciplined scheduling and route planning for uninterrupted site operations.",
+    icon: "truck",
+    points: [
+      "Fast turnaround and route planning",
+      "Bulk movement for construction materials",
+      "Reliable dispatch and delivery tracking"
+    ],
+    children: [
+      { label: "Rubble", href: "/services/materials/transport-rubble" },
+      { label: "Metal 10/20", href: "/services/materials/transport-metal-10-20" },
+      { label: "M.Sand", href: "/services/materials/transport-m-sand" },
+      { label: "Plaster Sand", href: "/services/materials/transport-plaster-sand" }
+    ]
+  },
+  {
+    slug: "transport-rubble",
+    title: "Rubble Transport",
+    group: "Trimurti Transport",
+    description: "Safe and timely rubble movement from excavation sites for disposal, filling, or reuse requirements.",
+    icon: "truck",
+    points: [
+      "Site-to-site rubble movement",
+      "Scheduled pickup and dispatch",
+      "Efficient turnaround for active sites"
+    ]
+  },
+  {
+    slug: "transport-metal-10-20",
+    title: "Metal 10/20 Transport",
+    group: "Trimurti Transport",
+    description: "Bulk haulage of 10/20 metal for concrete and civil works with dependable delivery windows.",
+    icon: "foundation",
+    points: [
+      "Bulk transport for metal aggregates",
+      "Timely delivery to batching and site points",
+      "Reliable logistics planning"
+    ]
+  },
+  {
+    slug: "transport-m-sand",
+    title: "M.Sand Transport",
+    group: "Trimurti Transport",
+    description: "Consistent and on-time M.Sand logistics to maintain uninterrupted project execution.",
+    icon: "arch",
+    points: [
+      "Clean loading and careful handling",
+      "Daily or on-demand dispatch",
+      "Optimized routes for fast supply"
+    ]
+  },
+  {
+    slug: "transport-plaster-sand",
+    title: "Plaster Sand Transport",
+    group: "Trimurti Transport",
+    description: "Specialized transport for plaster sand with controlled handling to preserve material quality.",
+    icon: "spark",
+    points: [
+      "Loss-minimized transport handling",
+      "Reliable delivery commitments",
+      "Support for interior and finishing phases"
+    ]
+  }
+];
 export const homeStats = [
   { value: "20+", label: "Active Projects" },
   { value: "250+", label: "Complete Projects" },
@@ -52,10 +210,9 @@ export const services = [
     short: "Precision-engineered excavation with minimal vibration and maximum control.",
     description:
       "High-precision explosives management for controlled excavations in dense geological environments and sensitive infrastructure zones.",
-    heroImage:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDOmdn15gFnARIsAxCehHV1FnRs1YG7mvEcRr8pJ8duOGGod2Q9Ic4rP3VUn1ql2Ruq5xY6LTJm5LpusszXyjojuGT9Vhl2TyQ-LRFYNo_4NNP7yekE1-M1UsUBVog3YcznAWkEc-baxnNWLqKHusE_Dk-YGzdYl-RK5h3yfKzr3C9ew0Ld_RiASWrky1Ue0MQcT2dcxvpdhgIFQDjw6U2idpYWxeEOrVXjgEGsSVpEajsECk2yrwpRKcinNYFIau0qkDRuBsPPldk",
-    detailImage:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDOAWbksS9ye5pYAcdBM84176G5iBEGeI9BTMXqeXR-DeIQI6p5uARrK1KK-PWbNzLXIngQjzrOh6H5eEszk_vNyNcEf-o_g-qnXsDeUrcnqJ7OMeVu_OLCWGBsFWjigrmhYlbyhtZtkXAzhWXTSyyrx40TuUM7HoSrMEIUAtiSwM7IvJGFoo244MKDUMKEMhsXQi5yg8DTYbOE0lIzxI-A1fBFO_6exTYBoB-1dH_bOQC6BjRsAm0r3vogA7_5nmF_K89vsD6L2rw",
+    heroImage: "/images/services/Hard Rock Control Blasting1.jpeg",
+    detailImage: "/images/services/Hard Rock Control Blasting2.jpeg",
+    ctaImage: "/images/services/Hard Rock Control Blasting3.jpeg",
     icon: "blast",
     heroTag: "Infrastructure Excellence",
     useCases: ["Urban Excavation", "Tunneling Projects", "Quarry Operations"],
