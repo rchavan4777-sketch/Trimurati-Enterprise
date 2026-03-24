@@ -64,7 +64,8 @@ export default function AboutPage() {
       <section className="section section--soft"><div className="container"><div className="values-grid">{values.map((item) => <article key={item.title} className="value-card"><div className="mini-icon"><Icon name={item.icon} /></div><h3 style={{ fontFamily: "var(--font-display)", fontStyle: "italic", marginTop: 0 }}>{item.title}</h3><p>{item.text}</p></article>)}</div></div></section>
       <section className="section">
         <div className="container" style={{ textAlign: "center" }}>
-          <h2 className="headline" style={{ margin: 0, fontSize: "clamp(2.4rem, 4.2vw, 3.6rem)" }}>Directed by Mr. Balaji.L.Chavan</h2>
+          <p className="eyebrow" style={{ margin: 0, letterSpacing: ".16em" }}>Directed by</p>
+          <h2 className="headline" style={{ margin: ".65rem 0 0", fontSize: "clamp(2.4rem, 4.2vw, 3.6rem)" }}>Mr. Balaji L. Chavan</h2>
         </div>
       </section>
       <WhatsAppFloat />
