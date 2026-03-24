@@ -2,7 +2,7 @@ import { Icon } from "@/components/icons";
 import { MediaFrame } from "@/components/media";
 import { StructuredData } from "@/components/structured-data";
 import { WhatsAppFloat } from "@/components/whatsapp-float";
-import { certifications, divisions, siteConfig, team, values } from "@/data/site";
+import { certifications, divisions, siteConfig, values } from "@/data/site";
 
 const aboutImage = "https://lh3.googleusercontent.com/aida-public/AB6AXuBXbDoqCzEu_-hIaqflYBqMj8WorLeFpiENlU8a7ZsH0zVnirfci4eekrJYGOX064F1LBofe7ty0eo2E1EPnwmpsYlXbnmrL_3IFQ0Z7tTTrAEwhjSH89AjkcZAVvQ444Fkw2tkzem1QX-X6LOn4fTo7QE1kL7tFLRdbUfmvXeUQvIzirHFX1oy1rCF0tCN4affq8TA5Hk2t_6YFBRBeF8nIqp2pK29bj14Y629u7yraQQpulrlk_OubGZplVLm9vTQywwyaSYFRzQ";
 
@@ -63,14 +63,16 @@ export default function AboutPage() {
       </section>
       <section className="section section--soft"><div className="container"><div className="values-grid">{values.map((item) => <article key={item.title} className="value-card"><div className="mini-icon"><Icon name={item.icon} /></div><h3 style={{ fontFamily: "var(--font-display)", fontStyle: "italic", marginTop: 0 }}>{item.title}</h3><p>{item.text}</p></article>)}</div></div></section>
       <section className="section">
-        <div className="container">
-          <div className="section-heading center"><h2 className="headline">Leadership Team</h2><p className="muted">The minds behind the machinery.</p></div>
-          <div className="team-grid">{team.map((member) => <article key={member.name} className="team-card"><figure><img src={member.image} alt={member.name} /></figure><h3>{member.name}</h3><span>{member.role}</span></article>)}</div>
+        <div className="container" style={{ textAlign: "center" }}>
+          <h2 className="headline" style={{ margin: 0, fontSize: "clamp(2.4rem, 4.2vw, 3.6rem)" }}>Directed by Mr. Balaji.L.Chavan</h2>
         </div>
       </section>
       <WhatsAppFloat />
     </>
   );
 }
+
+
+
 
 
