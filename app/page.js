@@ -8,6 +8,34 @@ import { clients, featuredServices, homeImages, homeStats, siteConfig } from "@/
 import { FadeIn, SlideIn, StaggerContainer, StaggerItem } from "@/components/motion";
 
 export default function HomePage() {
+  const faqs = [
+    {
+      question: "Which infrastructure services do you handle end-to-end?",
+      answer:
+        "We deliver controlled blasting, rock cutting, cracking, rockbolt support, steel fabric and wiremesh fixing, shotcrete support, plus allied material and transport operations."
+    },
+    {
+      question: "Do you provide support for large and time-sensitive projects?",
+      answer:
+        "Yes. Our teams are structured for high-volume industrial projects with staged deployment, safety-led planning, and execution schedules aligned to site milestones."
+    },
+    {
+      question: "How do you maintain safety during rock engineering activities?",
+      answer:
+        "We follow survey-first planning, methodical sequencing, trained field supervision, and strict on-site control checks to reduce vibration impact and protect adjacent structures."
+    },
+    {
+      question: "Can we request both technical execution and material logistics together?",
+      answer:
+        "Absolutely. We regularly combine execution services with aggregate supply and transport so clients can manage progress through a single coordinated delivery partner."
+    },
+    {
+      question: "How can we start a new project discussion?",
+      answer:
+        "Share your project location, scope, and timeline through our contact page. Our team will review site requirements and propose a practical execution approach."
+    }
+  ];
+
   const schema = {
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -119,13 +147,28 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      <section className="section">
-        <FadeIn className="container" style={{ textAlign: "center" }}>
-          <span className="eyebrow">Government Certified A-Class Contractor</span>
-          <h2 className="headline" style={{ maxWidth: "40rem", margin: "1rem auto 0" }}>
-            Trusted by major metropolitan infrastructure projects nationwide.
-          </h2>
-        </FadeIn>
+      <section className="section section--soft">
+        <div className="container">
+          <FadeIn className="section-heading center">
+            <span className="eyebrow">FAQ</span>
+            <h2 className="headline" style={{ marginTop: "1rem" }}>
+              Frequently Asked <em>Questions</em>
+            </h2>
+            <p className="muted" style={{ maxWidth: "42rem", margin: "1.1rem auto 0" }}>
+              Quick answers to common questions about our execution, quality process, and project coordination.
+            </p>
+          </FadeIn>
+          <StaggerContainer className="faq-list">
+            {faqs.map((item) => (
+              <StaggerItem key={item.question} className="faq-item">
+                <details>
+                  <summary>{item.question}</summary>
+                  <p>{item.answer}</p>
+                </details>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </div>
       </section>
       <WhatsAppFloat />
     </>

@@ -131,6 +131,35 @@ button, input, select, textarea { font: inherit; }
 .method-item strong { position: absolute; left: 0; top: 0; font-family: var(--font-display), serif; color: rgba(197,198,210,.8); font-size: 2.8rem; }
 .resource-card { padding: 0; overflow: hidden; }
 .resource-card__body { padding: 1.5rem; }
+.service-video-card {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 1.5rem;
+  margin-bottom: 2.2rem;
+  padding: 1.35rem;
+  border: 1px solid rgba(70,91,158,.14);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at top right, rgba(132,153,224,.22), transparent 52%),
+    linear-gradient(135deg, #ffffff, #f7f9ff);
+  box-shadow: 0 18px 44px rgba(13,26,57,.08);
+}
+.service-video-copy {
+  align-self: center;
+  padding: .55rem .55rem .55rem .75rem;
+}
+.service-video-embed {
+  overflow: hidden;
+  border-radius: 18px;
+  background: #0d1a39;
+  box-shadow: 0 16px 32px rgba(13,26,57,.16);
+}
+.service-video-embed iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+}
 .client-marquee { margin-top: 2.75rem; display: grid; gap: 1.25rem; }
 .client-marquee__row { overflow: hidden; padding: .25rem 0; mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent); }
 .client-marquee__track { --marquee-gap: 1.25rem; display: flex; gap: var(--marquee-gap); width: max-content; animation: client-marquee-scroll 30s linear infinite; will-change: transform; }
@@ -141,6 +170,60 @@ button, input, select, textarea { font: inherit; }
 .client-card__logo img { object-fit: contain; padding: 1rem; }
 .client-card p { margin: 0; text-align: center; font-size: .92rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--foreground); }
 .client-marquee__row:hover .client-marquee__track { animation-play-state: paused; }
+.faq-list {
+  display: grid;
+  gap: .95rem;
+  max-width: 54rem;
+  margin: 0 auto;
+}
+.faq-item {
+  border-radius: 18px;
+  border: 1px solid rgba(70,91,158,.14);
+  background: linear-gradient(180deg, #ffffff, #f8f9ff);
+  box-shadow: 0 10px 26px rgba(13,26,57,.05);
+  overflow: hidden;
+}
+.faq-item details {
+  padding: 0;
+}
+.faq-item summary {
+  position: relative;
+  list-style: none;
+  cursor: pointer;
+  padding: 1rem 3.2rem 1rem 1.2rem;
+  font-weight: 700;
+  color: #1d2c55;
+  line-height: 1.45;
+}
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+.faq-item summary::after {
+  content: "+";
+  position: absolute;
+  right: 1.1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.65rem;
+  height: 1.65rem;
+  border-radius: 999px;
+  border: 1px solid rgba(70,91,158,.28);
+  color: var(--primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  line-height: 1;
+}
+.faq-item details[open] summary::after {
+  content: "-";
+}
+.faq-item p {
+  margin: 0;
+  padding: 0 1.2rem 1.15rem;
+  color: var(--muted);
+  line-height: 1.75;
+}
 .footer { background: #0d1a39; color: rgba(238,240,255,.72); padding-top: 4rem; }
 .footer h3, .footer h4 { color: white; }
 .footer p { color: white; }
@@ -156,6 +239,8 @@ button, input, select, textarea { font: inherit; }
   .contact-form__row { grid-template-columns: 1fr; }
   .floating-stat { position: static; margin-top: 1rem; }
   .section-heading { display: block; }
+  .service-video-card { grid-template-columns: 1fr; }
+  .service-video-copy { padding: .2rem; }
 }
 @media (max-width: 720px) {
   .nav { display: none; }
@@ -178,6 +263,9 @@ button, input, select, textarea { font: inherit; }
   .section { padding: 4.3rem 0; }
   .cta-panel { padding: 2rem; }
   .footer-bottom { display: block; }
+  .faq-item summary {
+    padding-right: 2.8rem;
+  }
 }
 
 
