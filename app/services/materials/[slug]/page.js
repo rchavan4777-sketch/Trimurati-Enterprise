@@ -1,8 +1,22 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Icon } from "@/components/icons";
+import { MediaFrame } from "@/components/media";
 import { StructuredData } from "@/components/structured-data";
 import { siteConfig, materialServicePages } from "@/data/site";
+
+const MATERIAL_LOCAL_IMAGES = {
+  "stone-crusher-m-sand": [
+    "/images/services/M. SAND1.jpeg",
+    "/images/services/M. SAND2.jpeg",
+    "/images/services/M. SAND3.jpeg"
+  ],
+  "transport-m-sand": [
+    "/images/services/M. SAND1.jpeg",
+    "/images/services/M. SAND2.jpeg",
+    "/images/services/M. SAND3.jpeg"
+  ]
+};
 
 export function generateStaticParams() {
   return materialServicePages.map((item) => ({ slug: item.slug }));
@@ -32,6 +46,10 @@ export default async function MaterialServicePage({ params }) {
   if (!service) {
     notFound();
   }
+
+  const localImages = MATERIAL_LOCAL_IMAGES[slug] ?? [];
+  const heroImage = localImages[0];
+  const galleryImages = localImages.length ? [...localImages, ...localImages] : [];
 
   const related = materialServicePages.filter((entry) => {
     if (entry.slug === service.slug) {
@@ -63,19 +81,27 @@ export default async function MaterialServicePage({ params }) {
       <StructuredData data={schema} />
 
       <section className="section" style={{ background: "linear-gradient(135deg, rgba(70,91,158,.96), rgba(132,153,224,.82))", color: "white" }}>
-        <div className="container" style={{ padding: "3rem 0" }}>
-          <span
-            className="eyebrow"
-            style={{ color: "white", background: "rgba(255,255,255,.14)", padding: ".45rem .85rem", borderRadius: "999px" }}
-          >
-            {service.group}
-          </span>
-          <h1 className="display" style={{ color: "white", marginTop: "1rem" }}>
-            {service.title}
-          </h1>
-          <p className="lede" style={{ color: "rgba(255,255,255,.86)", maxWidth: "50rem", marginTop: "1.2rem" }}>
-            {service.description}
-          </p>
+        <div className="container split-grid" style={{ alignItems: "center" }}>
+          <div style={{ padding: "2rem 0" }}>
+            <span
+              className="eyebrow"
+              style={{ color: "white", background: "rgba(255,255,255,.14)", padding: ".45rem .85rem", borderRadius: "999px" }}
+            >
+              {service.group}
+            </span>
+            <h1 className="display" style={{ color: "white", marginTop: "1rem" }}>
+              {service.title}
+            </h1>
+            <p className="lede" style={{ color: "rgba(255,255,255,.86)", maxWidth: "50rem", marginTop: "1.2rem" }}>
+              {service.description}
+            </p>
+          </div>
+
+          {heroImage ? (
+            <div style={{ position: "relative", aspectRatio: "16 / 10" }}>
+              <MediaFrame src={heroImage} alt={service.title} className="image-frame" />
+            </div>
+          ) : null}
         </div>
       </section>
 
@@ -108,6 +134,23 @@ export default async function MaterialServicePage({ params }) {
             </div>
           </article>
         </div>
+
+        {galleryImages.length ? (
+          <div className="auto-strip" aria-label={`${service.title} gallery`}>
+            <div className="auto-strip__track">
+              {galleryImages.map((image, index) => (
+                <div key={`${image}-${index}`} className="auto-strip__item">
+                  <MediaFrame
+                    src={image}
+                    alt={`${service.title} image ${index + 1}`}
+                    className="image-frame"
+                    sizes="(max-width: 980px) 70vw, 28vw"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : null}
       </section>
     </>
   );

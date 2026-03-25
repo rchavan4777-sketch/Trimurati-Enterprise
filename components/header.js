@@ -257,7 +257,7 @@ export function Header() {
           Get Quote
         </Link>
         <details className="menu-toggle">
-          <summary>Menu</summary>
+          <summary aria-label="Open menu"><span className="menu-toggle__lines" aria-hidden="true"><span></span><span></span><span></span></span></summary>
           <div className="topbar__mobile">{navigation.map((item) => renderMobileItem(item))}</div>
         </details>
       </div>
