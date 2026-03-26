@@ -1,10 +1,7 @@
 import { Icon } from "@/components/icons";
-import { MediaFrame } from "@/components/media";
 import { StructuredData } from "@/components/structured-data";
 import { WhatsAppFloat } from "@/components/whatsapp-float";
 import { certifications, divisions, siteConfig, values } from "@/data/site";
-
-const aboutImage = "https://lh3.googleusercontent.com/aida-public/AB6AXuBXbDoqCzEu_-hIaqflYBqMj8WorLeFpiENlU8a7ZsH0zVnirfci4eekrJYGOX064F1LBofe7ty0eo2E1EPnwmpsYlXbnmrL_3IFQ0Z7tTTrAEwhjSH89AjkcZAVvQ444Fkw2tkzem1QX-X6LOn4fTo7QE1kL7tFLRdbUfmvXeUQvIzirHFX1oy1rCF0tCN4affq8TA5Hk2t_6YFBRBeF8nIqp2pK29bj14Y629u7yraQQpulrlk_OubGZplVLm9vTQywwyaSYFRzQ";
 
 export const metadata = {
   title: "About Us",
@@ -12,6 +9,8 @@ export const metadata = {
 };
 
 export default function AboutPage() {
+  const aboutHeroImage = "/images/services/Hard Rock Control Blasting4.jpeg";
+
   const schema = {
     "@context": "https://schema.org",
     "@type": "AboutPage",
@@ -22,18 +21,18 @@ export default function AboutPage() {
   return (
     <>
       <StructuredData data={schema} />
-      <section className="section">
-        <div className="container hero-grid">
-          <div>
-            <span className="eyebrow">Our Legacy</span>
-            <h1 className="display">Engineering a <em>Solid</em> Future.</h1>
-            <p className="lede" style={{ maxWidth: "40rem", marginTop: "1.5rem" }}>
-              Founded on principles of reliability and structural integrity, Trimurti Enterprise has evolved from a local transport outfit into a regional powerhouse of infrastructure and material supply.
-            </p>
-          </div>
-          <div className="hero-art">
-            <MediaFrame src={aboutImage} alt="Architectural concrete and steel structure" className="hero-frame" priority />
-            <div className="floating-stat"><strong>25+</strong><span className="eyebrow" style={{ letterSpacing: ".14em" }}>Years of Civil Excellence</span></div>
+      <section className="section about-hero">
+        <div className="about-hero__bg" aria-hidden="true" style={{ backgroundImage: `url(${aboutHeroImage})` }} />
+        <div className="about-hero__overlay" aria-hidden="true" />
+        <div className="container about-hero__content">
+          <span className="eyebrow">Our Legacy</span>
+          <h1 className="display">Engineering a <em>Solid</em> Future.</h1>
+          <p className="lede" style={{ maxWidth: "40rem", marginTop: "1.5rem" }}>
+            Founded on principles of reliability and structural integrity, Trimurti Enterprise has evolved from a local transport outfit into a regional powerhouse of infrastructure and material supply.
+          </p>
+          <div className="about-hero__stat">
+            <strong>25+</strong>
+            <span className="eyebrow" style={{ letterSpacing: ".14em" }}>Years of Civil Excellence</span>
           </div>
         </div>
       </section>
