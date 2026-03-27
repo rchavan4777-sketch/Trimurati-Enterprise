@@ -1,5 +1,5 @@
+import CountUp from "@/components/count-up";
 import { Icon } from "@/components/icons";
-import { MediaFrame } from "@/components/media";
 import { StructuredData } from "@/components/structured-data";
 import { WhatsAppFloat } from "@/components/whatsapp-float";
 import { contactStats, siteConfig } from "@/data/site";
@@ -7,6 +7,20 @@ import { contactStats, siteConfig } from "@/data/site";
 export const metadata = {
   title: "Contact",
   description: "Contact Trimurti Enterprise for stone crusher supply, transport logistics, hard rock blasting, and infrastructure consultation."
+};
+
+const parseStatValue = (value) => {
+  const clean = value.replace(/,/g, "");
+  const match = clean.match(/^([+-]?\d+(?:\.\d+)?)(.*)$/);
+
+  if (!match) {
+    return { number: 0, suffix: value };
+  }
+
+  return {
+    number: Number(match[1]),
+    suffix: match[2]
+  };
 };
 
 export default function ContactPage() {
@@ -20,7 +34,14 @@ export default function ContactPage() {
   return (
     <>
       <StructuredData data={schema} />
-      <section className="section"><div className="container" style={{ textAlign: "center" }}><span className="eyebrow">Reach Out To Us</span><h1 className="display" style={{ maxWidth: "56rem", margin: "1rem auto 0" }}>Let&apos;s build your <em>vision</em> together.</h1></div></section>
+      <section className="section">
+        <div className="container" style={{ textAlign: "center" }}>
+          <span className="eyebrow">Reach Out To Us</span>
+          <h1 className="display" style={{ maxWidth: "56rem", margin: "1rem auto 0" }}>
+            Let&apos;s build your <em>vision</em> together.
+          </h1>
+        </div>
+      </section>
       <section className="section" style={{ paddingTop: 0 }}>
         <div className="container contact-grid">
           <article className="service-card">
@@ -66,12 +87,26 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-      <section className="section section--soft"><div className="container"><div className="card-grid">{contactStats.map((stat) => <div key={stat.label} className="stat-card" style={{ color: "var(--foreground)" }}><strong style={{ color: "var(--primary)" }}>{stat.value}</strong><span style={{ color: "#757681" }}>{stat.label}</span></div>)}</div></div></section>
+      <section className="section section--soft">
+        <div className="container">
+          <div className="card-grid">
+            {contactStats.map((stat) => {
+              const { number, suffix } = parseStatValue(stat.value);
+
+              return (
+                <div key={stat.label} className="stat-card" style={{ color: "var(--foreground)" }}>
+                  <strong style={{ color: "var(--primary)" }}>
+                    <CountUp from={0} to={number} duration={1.8} separator="," suffix={suffix} showSuffixOnEnd className="stat-card__count" />
+                  </strong>
+                  <span style={{ color: "#757681" }}>{stat.label}</span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
       <WhatsAppFloat />
     </>
   );
 }
-
-
-
 
