@@ -1,5 +1,6 @@
 import { Icon } from "@/components/icons";
 import { MediaFrame } from "@/components/media";
+import CountUp from "@/components/count-up";
 import { StructuredData } from "@/components/structured-data";
 import { WhatsAppFloat } from "@/components/whatsapp-float";
 import { contactStats, siteConfig } from "@/data/site";
@@ -10,6 +11,22 @@ export const metadata = {
 };
 
 export default function ContactPage() {
+  const parseStatValue = (value) => {
+    const valueAsText = String(value).trim();
+    const match = valueAsText.match(/-?\d+(\.\d+)?/);
+
+    if (!match) {
+      return { number: 0, suffix: valueAsText };
+    }
+
+    const numberText = match[0];
+
+    return {
+      number: Number(numberText),
+      suffix: valueAsText.replace(numberText, "")
+    };
+  };
+
   const schema = {
     "@context": "https://schema.org",
     "@type": "ContactPage",
@@ -66,7 +83,7 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-      <section className="section section--soft"><div className="container"><div className="card-grid">{contactStats.map((stat) => <div key={stat.label} className="stat-card" style={{ color: "var(--foreground)" }}><strong style={{ color: "var(--primary)" }}>{stat.value}</strong><span style={{ color: "#757681" }}>{stat.label}</span></div>)}</div></div></section>
+      <section className="section section--soft"><div className="container"><div className="card-grid">{contactStats.map((stat) => { const parsed = parseStatValue(stat.value); return <div key={stat.label} className="stat-card" style={{ color: "var(--foreground)" }}><strong style={{ color: "var(--primary)" }}><CountUp from={0} to={parsed.number} duration={1.4} separator="," startCounting className="count-up-text" />{parsed.suffix}</strong><span style={{ color: "#757681" }}>{stat.label}</span></div>; })}</div></div></section>
       <WhatsAppFloat />
     </>
   );
