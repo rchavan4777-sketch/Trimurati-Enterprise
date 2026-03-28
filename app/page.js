@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import Link from "next/link";
 import CountUp from "@/components/count-up";
 import { Icon } from "@/components/icons";
@@ -7,6 +7,7 @@ import { StructuredData } from "@/components/structured-data";
 import { WhatsAppFloat } from "@/components/whatsapp-float";
 import { clients, featuredServices, homeImages, homeStats, siteConfig } from "@/data/site";
 import { FadeIn, SlideIn, StaggerContainer, StaggerItem } from "@/components/motion";
+import BorderGlow from "@/components/border-glow";
 
 const parseStatValue = (value) => {
   const clean = value.replace(/,/g, "");
@@ -121,10 +122,12 @@ export default function HomePage() {
           </FadeIn>
           <StaggerContainer className="card-grid">
             {featuredServices.map((service) => (
-              <StaggerItem key={service.title} className="service-card">
-                <div className="service-icon"><Icon name={service.icon} /></div>
-                <h3>{service.title}</h3>
-                <p>{service.text}</p>
+              <StaggerItem key={service.title}>
+                <BorderGlow innerClassName="service-card" backgroundColor="var(--surface-card)" borderRadius={24} glowRadius={28}>
+                  <div className="service-icon"><Icon name={service.icon} /></div>
+                  <h3>{service.title}</h3>
+                  <p>{service.text}</p>
+                </BorderGlow>
               </StaggerItem>
             ))}
           </StaggerContainer>
@@ -203,3 +206,6 @@ export default function HomePage() {
     </>
   );
 }
+
+
+

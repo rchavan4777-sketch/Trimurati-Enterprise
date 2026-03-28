@@ -1,5 +1,6 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { notFound } from "next/navigation";
+import BorderGlow from "@/components/border-glow";
 import { Icon } from "@/components/icons";
 import { MediaFrame } from "@/components/media";
 import { FadeIn, SlideIn, StaggerContainer, StaggerItem } from "@/components/motion";
@@ -209,20 +210,22 @@ export default async function MaterialServicePage({ params }) {
               <StaggerContainer className="feature-grid">
                 {service.subServices.map((subService) => (
                   <StaggerItem key={subService.slug}>
-                    <article id={subService.slug} className="benefit-card" style={{ scrollMarginTop: "7rem" }}>
-                      <div style={{ display: "flex", alignItems: "center", gap: ".9rem", marginBottom: "1rem" }}>
-                        <div className="mini-icon" style={{ marginBottom: 0 }}>
-                          <Icon name={divisionConfig.iconOverrides[subService.slug] ?? subService.icon} />
+                    <BorderGlow innerClassName="benefit-card" backgroundColor="var(--surface-card)" borderRadius={24}>
+                      <article id={subService.slug} style={{ scrollMarginTop: "7rem" }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: ".9rem", marginBottom: "1rem" }}>
+                          <div className="mini-icon" style={{ marginBottom: 0 }}>
+                            <Icon name={divisionConfig.iconOverrides[subService.slug] ?? subService.icon} />
+                          </div>
+                          <h3 style={{ margin: 0 }}>{subService.title}</h3>
                         </div>
-                        <h3 style={{ margin: 0 }}>{subService.title}</h3>
-                      </div>
-                      <p>{subService.description}</p>
-                      <ul className="bullet-list" style={{ marginTop: "1rem" }}>
-                        {subService.points.map((point) => (
-                          <li key={point}>{point}</li>
-                        ))}
-                      </ul>
-                    </article>
+                        <p>{subService.description}</p>
+                        <ul className="bullet-list" style={{ marginTop: "1rem" }}>
+                          {subService.points.map((point) => (
+                            <li key={point}>{point}</li>
+                          ))}
+                        </ul>
+                      </article>
+                    </BorderGlow>
                   </StaggerItem>
                 ))}
               </StaggerContainer>
@@ -251,85 +254,95 @@ export default async function MaterialServicePage({ params }) {
             <div className="container" style={{ marginTop: "2rem" }}>
               <StaggerContainer className="split-grid">
                 <StaggerItem>
-                  <article className="panel">
-                    <span className="eyebrow">Technical Specifications</span>
-                    <h2 className="headline" style={{ marginTop: "1rem" }}>Technical Specifications</h2>
-                    <p style={{ marginTop: "1rem" }}>{divisionConfig.technicalDescription}</p>
-                    <ul className="bullet-list" style={{ marginTop: "1rem" }}>
-                      {divisionConfig.technicalPoints.map((point) => (
-                        <li key={point}>{point}</li>
-                      ))}
-                    </ul>
-                  </article>
+                  <BorderGlow innerClassName="panel" backgroundColor="var(--surface-low)" borderRadius={24}>
+                    <article>
+                      <span className="eyebrow">Technical Specifications</span>
+                      <h2 className="headline" style={{ marginTop: "1rem" }}>Technical Specifications</h2>
+                      <p style={{ marginTop: "1rem" }}>{divisionConfig.technicalDescription}</p>
+                      <ul className="bullet-list" style={{ marginTop: "1rem" }}>
+                        {divisionConfig.technicalPoints.map((point) => (
+                          <li key={point}>{point}</li>
+                        ))}
+                      </ul>
+                    </article>
+                  </BorderGlow>
                 </StaggerItem>
 
                 <StaggerItem>
-                  <article className="panel">
-                    <span className="eyebrow">Production Process</span>
-                    <h2 className="headline" style={{ marginTop: "1rem" }}>{divisionConfig.productionTitle}</h2>
-                    <p style={{ marginTop: "1rem" }}>{divisionConfig.productionIntro}</p>
-                    <ul className="bullet-list" style={{ marginTop: "1rem" }}>
-                      {divisionConfig.productionSteps.map((step) => (
-                        <li key={step}>{step}</li>
-                      ))}
-                    </ul>
-                    <p style={{ marginTop: "1rem", fontWeight: 600 }}>{divisionConfig.productionClosing}</p>
-                  </article>
+                  <BorderGlow innerClassName="panel" backgroundColor="var(--surface-low)" borderRadius={24}>
+                    <article>
+                      <span className="eyebrow">Production Process</span>
+                      <h2 className="headline" style={{ marginTop: "1rem" }}>{divisionConfig.productionTitle}</h2>
+                      <p style={{ marginTop: "1rem" }}>{divisionConfig.productionIntro}</p>
+                      <ul className="bullet-list" style={{ marginTop: "1rem" }}>
+                        {divisionConfig.productionSteps.map((step) => (
+                          <li key={step}>{step}</li>
+                        ))}
+                      </ul>
+                      <p style={{ marginTop: "1rem", fontWeight: 600 }}>{divisionConfig.productionClosing}</p>
+                    </article>
+                  </BorderGlow>
                 </StaggerItem>
               </StaggerContainer>
             </div>
 
             <FadeIn className="container" style={{ marginTop: "2rem" }}>
-              <article className="panel">
-                <span className="eyebrow">Operational Promise</span>
-                <h2 className="headline" style={{ marginTop: "1rem" }}>{divisionConfig.promiseTitle}</h2>
-                <p style={{ marginTop: "1rem" }}>{divisionConfig.promiseIntro}</p>
-                <div style={{ display: "grid", gap: ".8rem", marginTop: "1.2rem" }}>
-                  {divisionConfig.promisePoints.map((point) => (
-                    <div key={point} className="nav-dropdown__item" style={{ border: "1px solid rgba(70,91,158,.14)", borderRadius: "10px" }}>
-                      {point}
-                    </div>
-                  ))}
-                </div>
-                <div style={{ marginTop: "1.4rem" }}>
-                  <Link href="/contact" className="button">Request Quote</Link>
-                </div>
-              </article>
+              <BorderGlow innerClassName="panel" backgroundColor="var(--surface-low)" borderRadius={24}>
+                <article>
+                  <span className="eyebrow">Operational Promise</span>
+                  <h2 className="headline" style={{ marginTop: "1rem" }}>{divisionConfig.promiseTitle}</h2>
+                  <p style={{ marginTop: "1rem" }}>{divisionConfig.promiseIntro}</p>
+                  <div style={{ display: "grid", gap: ".8rem", marginTop: "1.2rem" }}>
+                    {divisionConfig.promisePoints.map((point) => (
+                      <div key={point} className="nav-dropdown__item" style={{ border: "1px solid rgba(70,91,158,.14)", borderRadius: "10px" }}>
+                        {point}
+                      </div>
+                    ))}
+                  </div>
+                  <div style={{ marginTop: "1.4rem" }}>
+                    <Link href="/contact" className="button">Request Quote</Link>
+                  </div>
+                </article>
+              </BorderGlow>
             </FadeIn>
           </>
         ) : (
           <div className="container" style={{ marginTop: "2rem" }}>
             <StaggerContainer className="split-grid">
               <StaggerItem>
-                <article className="panel">
-                  <div className="service-icon">
-                    <Icon name={service.icon} />
-                  </div>
-                  <h2 className="headline">Service Highlights</h2>
-                  <ul className="bullet-list" style={{ marginTop: "1rem" }}>
-                    {service.points.map((point) => (
-                      <li key={point}>{point}</li>
-                    ))}
-                  </ul>
-                  <div style={{ marginTop: "1.4rem", display: "flex", gap: ".8rem", flexWrap: "wrap" }}>
-                    <Link href="/contact" className="button">Request Quote</Link>
-                    <Link href="/services" className="button-secondary">All Services</Link>
-                  </div>
-                </article>
+                <BorderGlow innerClassName="panel" backgroundColor="var(--surface-low)" borderRadius={24}>
+                  <article>
+                    <div className="service-icon">
+                      <Icon name={service.icon} />
+                    </div>
+                    <h2 className="headline">Service Highlights</h2>
+                    <ul className="bullet-list" style={{ marginTop: "1rem" }}>
+                      {service.points.map((point) => (
+                        <li key={point}>{point}</li>
+                      ))}
+                    </ul>
+                    <div style={{ marginTop: "1.4rem", display: "flex", gap: ".8rem", flexWrap: "wrap" }}>
+                      <Link href="/contact" className="button">Request Quote</Link>
+                      <Link href="/services" className="button-secondary">All Services</Link>
+                    </div>
+                  </article>
+                </BorderGlow>
               </StaggerItem>
 
               {related.length ? (
                 <StaggerItem>
-                  <article className="panel">
-                    <h3 style={{ marginTop: 0 }}>Related Services</h3>
-                    <div style={{ display: "grid", gap: ".75rem", marginTop: "1rem" }}>
-                      {related.map((item) => (
-                        <Link key={item.slug} href={`/services/materials/${item.slug}`} className="nav-dropdown__item" style={{ border: "1px solid rgba(70,91,158,.14)", borderRadius: "10px" }}>
-                          {item.title}
-                        </Link>
-                      ))}
-                    </div>
-                  </article>
+                  <BorderGlow innerClassName="panel" backgroundColor="var(--surface-low)" borderRadius={24}>
+                    <article>
+                      <h3 style={{ marginTop: 0 }}>Related Services</h3>
+                      <div style={{ display: "grid", gap: ".75rem", marginTop: "1rem" }}>
+                        {related.map((item) => (
+                          <Link key={item.slug} href={`/services/materials/${item.slug}`} className="nav-dropdown__item" style={{ border: "1px solid rgba(70,91,158,.14)", borderRadius: "10px" }}>
+                            {item.title}
+                          </Link>
+                        ))}
+                      </div>
+                    </article>
+                  </BorderGlow>
                 </StaggerItem>
               ) : null}
             </StaggerContainer>
@@ -339,3 +352,4 @@ export default async function MaterialServicePage({ params }) {
     </>
   );
 }
+

@@ -1,6 +1,11 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { Icon } from "@/components/icons";
 import { navigation, siteConfig } from "@/data/site";
+
+const socialIconMap = {
+  instagram: "instagram",
+  youtube: "youtube"
+};
 
 export function Footer() {
   return (
@@ -39,8 +44,18 @@ export function Footer() {
             <p>{siteConfig.address.city}, {siteConfig.address.region}</p>
             <p>{siteConfig.email}</p>
             <div className="social-row" style={{ marginTop: "1rem" }}>
-              <a className="social-icon" href={siteConfig.socials[0].href} aria-label="LinkedIn"><Icon name="linkedin" /></a>
-              <a className="social-icon" href={siteConfig.socials[1].href} aria-label="Instagram"><Icon name="instagram" /></a>
+              {siteConfig.socials.map((social) => (
+                <a
+                  key={social.label}
+                  className="social-icon"
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                >
+                  <Icon name={socialIconMap[social.label.toLowerCase()] ?? "instagram"} />
+                </a>
+              ))}
             </div>
           </div>
         </div>
@@ -52,5 +67,4 @@ export function Footer() {
     </footer>
   );
 }
-
 

@@ -1,7 +1,8 @@
-import CountUp from "@/components/count-up";
+﻿import CountUp from "@/components/count-up";
 import { Icon } from "@/components/icons";
 import { MediaFrame } from "@/components/media";
 import { FadeIn, SlideIn, StaggerContainer, StaggerItem } from "@/components/motion";
+import BorderGlow from "@/components/border-glow";
 import { StructuredData } from "@/components/structured-data";
 import { WhatsAppFloat } from "@/components/whatsapp-float";
 import { divisions, siteConfig, values } from "@/data/site";
@@ -74,16 +75,18 @@ export default function AboutPage() {
 
           <StaggerContainer className="split-grid">
             {divisions.map((division, index) => (
-              <StaggerItem key={division.title} className="division-card">
-                <div className="service-meta">
-                  <div className="service-icon"><Icon name={division.icon} /></div>
-                  <span className="service-index">{`0${index + 1}`}</span>
-                </div>
-                <h3>{division.title}</h3>
-                <p>{division.text}</p>
-                <ul className="bullet-list">
-                  {division.points.map((point) => <li key={point}>{point}</li>)}
-                </ul>
+              <StaggerItem key={division.title}>
+                <BorderGlow innerClassName="division-card" backgroundColor="var(--surface-card)" borderRadius={24}>
+                  <div className="service-meta">
+                    <div className="service-icon"><Icon name={division.icon} /></div>
+                    <span className="service-index">{`0${index + 1}`}</span>
+                  </div>
+                  <h3>{division.title}</h3>
+                  <p>{division.text}</p>
+                  <ul className="bullet-list">
+                    {division.points.map((point) => <li key={point}>{point}</li>)}
+                  </ul>
+                </BorderGlow>
               </StaggerItem>
             ))}
           </StaggerContainer>
@@ -126,9 +129,11 @@ export default function AboutPage() {
         <div className="container">
           <StaggerContainer className="values-grid">
             {values.map((item) => (
-              <StaggerItem key={item.title} className="value-card">
-                <div className="value-card__head"><div className="mini-icon"><Icon name={item.icon} /></div><h3 style={{ fontFamily: "var(--font-display)", fontStyle: "italic", marginTop: 0 }}>{item.title}</h3></div>
-                <p>{item.text}</p>
+              <StaggerItem key={item.title}>
+                <BorderGlow innerClassName="value-card" backgroundColor="var(--surface-card)" borderRadius={24}>
+                  <div className="value-card__head"><div className="mini-icon"><Icon name={item.icon} /></div><h3 style={{ fontFamily: "var(--font-display)", fontStyle: "italic", marginTop: 0 }}>{item.title}</h3></div>
+                  <p>{item.text}</p>
+                </BorderGlow>
               </StaggerItem>
             ))}
           </StaggerContainer>
@@ -148,6 +153,9 @@ export default function AboutPage() {
     </>
   );
 }
+
+
+
 
 
 

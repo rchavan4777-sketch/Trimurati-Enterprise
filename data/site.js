@@ -1,4 +1,4 @@
-export const siteConfig = {
+﻿export const siteConfig = {
   name: "Trimurti Enterprise",
   url: "https://www.trimurtienterprise.com",
   description:
@@ -14,8 +14,8 @@ export const siteConfig = {
     postalCode: "40065"
   },
   socials: [
-    { label: "LinkedIn", href: "https://www.linkedin.com" },
-    { label: "Instagram", href: "https://www.instagram.com" }
+    { label: "Instagram", href: "https://www.instagram.com/trimurti_enterprises47?igsh=aWI3aWJ2ZzlibTA3" },
+    { label: "YouTube", href: "https://youtube.com/@trimurtienterprisespvt?si=WkX31CyUNzvHkNLB" }
   ]
 };
 
@@ -444,6 +444,9 @@ export const homeImages = {
   transport:
     "https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=1200&q=80"
 };
+
+
+
 
 
 

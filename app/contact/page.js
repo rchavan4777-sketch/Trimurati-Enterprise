@@ -1,8 +1,10 @@
-import CountUp from "@/components/count-up";
+﻿import CountUp from "@/components/count-up";
 import { Icon } from "@/components/icons";
 import { FadeIn, SlideIn, StaggerContainer, StaggerItem } from "@/components/motion";
+import BorderGlow from "@/components/border-glow";
 import { StructuredData } from "@/components/structured-data";
 import { WhatsAppFloat } from "@/components/whatsapp-float";
+import ContactEnquiryForm from "@/components/contact-enquiry-form";
 import { contactStats, siteConfig } from "@/data/site";
 
 export const metadata = {
@@ -48,101 +50,35 @@ export default function ContactPage() {
       <section className="section" style={{ paddingTop: 0 }}>
         <div className="container contact-grid">
           <SlideIn direction="left">
-            <article className="service-card">
-              <h2 className="headline" style={{ fontSize: "2.5rem" }}>Send an Enquiry</h2>
-              <form className="contact-form" style={{ marginTop: "2rem" }}>
-                <div className="contact-form__row">
-                  <div className="field">
-                    <label htmlFor="name">Full Name</label>
-                    <input
-                      id="name"
-                      name="name"
-                      type="text"
-                      placeholder="John Doe"
-                      autoComplete="name"
-                      required
-                    />
-                  </div>
-                  <div className="field">
-                    <label htmlFor="phone">Phone Number</label>
-                    <input
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      placeholder="+91 000 000 0000"
-                      autoComplete="tel"
-                      inputMode="tel"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="field">
-                  <label htmlFor="email">Email Address</label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    placeholder="john@enterprise.com"
-                    autoComplete="email"
-                    required
-                  />
-                </div>
-
-                <div className="field">
-                  <label htmlFor="service">Service Interest</label>
-                  <select id="service" name="service" defaultValue="" required>
-                    <option value="" disabled>Select a Service</option>
-                    <option>Stone Crusher Operations</option>
-                    <option>Transport Logistics</option>
-                    <option>Material Supply</option>
-                    <option>Site Excavation</option>
-                    <option>Construction Consultation</option>
-                    <option>Safety Auditing</option>
-                  </select>
-                </div>
-
-                <div className="field">
-                  <label htmlFor="message">Message</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows="5"
-                    placeholder="Tell us about your project requirements..."
-                    autoComplete="off"
-                    required
-                  />
-                </div>
-
-                <button type="submit" className="button" style={{ width: "100%", marginTop: ".5rem" }}>
-                  Submit Enquiry
-                </button>
-              </form>
-            </article>
+            <ContactEnquiryForm />
           </SlideIn>
 
           <SlideIn direction="right">
             <StaggerContainer style={{ display: "grid", gap: "1.25rem" }}>
               <StaggerItem>
-                <article className="contact-card panel">
-                  <div className="mini-icon"><Icon name="location" /></div>
-                  <h3 style={{ marginTop: 0 }}>Our Headquarter</h3>
-                  <p>
-                    {siteConfig.address.street}, {siteConfig.address.city}, {siteConfig.address.region} {siteConfig.address.postalCode}
-                  </p>
-                </article>
+                <BorderGlow innerClassName="contact-card panel" backgroundColor="var(--surface-low)" borderRadius={24}>
+                  <article>
+                    <div className="mini-icon"><Icon name="location" /></div>
+                    <h3 style={{ marginTop: 0 }}>Our Headquarter</h3>
+                    <p>
+                      {siteConfig.address.street}, {siteConfig.address.city}, {siteConfig.address.region} {siteConfig.address.postalCode}
+                    </p>
+                  </article>
+                </BorderGlow>
               </StaggerItem>
 
               <StaggerItem>
-                <article className="contact-card panel">
-                  <div className="mini-icon"><Icon name="call" /></div>
-                  <h3 style={{ marginTop: 0 }}>Phone &amp; Support</h3>
-                  <p><a href={`tel:${siteConfig.phone.replace(/\s+/g, "")}`}>{siteConfig.phone}</a></p>
-                  <p>{siteConfig.workingHours}</p>
-                  <div className="mini-icon" style={{ marginTop: "1rem" }}><Icon name="mail" /></div>
-                  <h3>Email</h3>
-                  <p><a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></p>
-                </article>
+                <BorderGlow innerClassName="contact-card panel" backgroundColor="var(--surface-low)" borderRadius={24}>
+                  <article>
+                    <div className="mini-icon"><Icon name="call" /></div>
+                    <h3 style={{ marginTop: 0 }}>Phone &amp; Support</h3>
+                    <p><a href={`tel:${siteConfig.phone.replace(/\s+/g, "")}`}>{siteConfig.phone}</a></p>
+                    <p>{siteConfig.workingHours}</p>
+                    <div className="mini-icon" style={{ marginTop: "1rem" }}><Icon name="mail" /></div>
+                    <h3>Email</h3>
+                    <p><a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></p>
+                  </article>
+                </BorderGlow>
               </StaggerItem>
 
               <StaggerItem>
@@ -222,3 +158,13 @@ export default function ContactPage() {
     </>
   );
 }
+
+
+
+
+
+
+
+
+
+
