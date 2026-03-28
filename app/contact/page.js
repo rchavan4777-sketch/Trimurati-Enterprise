@@ -1,5 +1,6 @@
 import CountUp from "@/components/count-up";
 import { Icon } from "@/components/icons";
+import { FadeIn, SlideIn, StaggerContainer, StaggerItem } from "@/components/motion";
 import { StructuredData } from "@/components/structured-data";
 import { WhatsAppFloat } from "@/components/whatsapp-float";
 import { contactStats, siteConfig } from "@/data/site";
@@ -34,79 +35,190 @@ export default function ContactPage() {
   return (
     <>
       <StructuredData data={schema} />
+
       <section className="section">
-        <div className="container" style={{ textAlign: "center" }}>
+        <FadeIn className="container" style={{ textAlign: "center" }}>
           <span className="eyebrow">Reach Out To Us</span>
           <h1 className="display" style={{ maxWidth: "56rem", margin: "1rem auto 0" }}>
             Let&apos;s build your <em>vision</em> together.
           </h1>
-        </div>
+        </FadeIn>
       </section>
+
       <section className="section" style={{ paddingTop: 0 }}>
         <div className="container contact-grid">
-          <article className="service-card">
-            <h2 className="headline" style={{ fontSize: "2.5rem" }}>Send an Enquiry</h2>
-            <form className="contact-form" style={{ marginTop: "2rem" }}>
-              <div className="contact-form__row">
-                <div className="field"><label htmlFor="name">Full Name</label><input id="name" name="name" type="text" placeholder="John Doe" /></div>
-                <div className="field"><label htmlFor="phone">Phone Number</label><input id="phone" name="phone" type="tel" placeholder="+91 000 000 0000" /></div>
-              </div>
-              <div className="field"><label htmlFor="email">Email Address</label><input id="email" name="email" type="email" placeholder="john@enterprise.com" /></div>
-              <div className="field"><label htmlFor="service">Service Interest</label><select id="service" name="service" defaultValue=""><option value="" disabled>Select a Service</option><option>Stone Crusher Operations</option><option>Transport Logistics</option><option>Material Supply</option><option>Site Excavation</option><option>Construction Consultation</option><option>Safety Auditing</option></select></div>
-              <div className="field"><label htmlFor="message">Message</label><textarea id="message" name="message" rows="5" placeholder="Tell us about your project requirements..." /></div>
-              <button type="submit" className="button" style={{ width: "100%", marginTop: ".5rem" }}>Submit Enquiry</button>
-            </form>
-          </article>
-          <div style={{ display: "grid", gap: "1.25rem" }}>
-            <article className="contact-card panel"><div className="mini-icon"><Icon name="location" /></div><h3 style={{ marginTop: 0 }}>Our Headquarter</h3><p>{siteConfig.address.street}, {siteConfig.address.city}, {siteConfig.address.region} {siteConfig.address.postalCode}</p></article>
-            <article className="contact-card panel"><div className="mini-icon"><Icon name="call" /></div><h3 style={{ marginTop: 0 }}>Phone &amp; Support</h3><p>{siteConfig.phone}</p><p>{siteConfig.workingHours}</p><div className="mini-icon" style={{ marginTop: "1rem" }}><Icon name="mail" /></div><h3>Email</h3><p>{siteConfig.email}</p></article>
-            <a className="contact-card whatsapp-card" href={`https://wa.me/${siteConfig.whatsapp}`}><div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "1rem" }}><div style={{ display: "flex", alignItems: "center", gap: "1rem" }}><span className="mini-icon" style={{ background: "rgba(255,255,255,.14)", color: "white", marginBottom: 0 }}><Icon name="chat" /></span><strong>Chat on WhatsApp</strong></div><Icon name="arrow" /></div></a>
-            <div className="map-card">
-              <iframe
-                title="Trimurti Enterprise Location"
-                src="https://www.google.com/maps?q=19.174911,72.876675&output=embed"
-                width="100%"
-                height="320"
-                style={{ border: 0, borderRadius: "24px" }}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                allowFullScreen
-              />
-              <a
-                className="map-card__badge contact-card"
-                href="https://www.google.com/maps/place/19%C2%B010'29.7%22N+72%C2%B052'36.0%22E/@19.174911,72.876675,17z/data=!3m1!4b1!4m4!3m3!8m2!3d19.174911!4d72.876675!18m1!1e1"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div style={{ display: "flex", alignItems: "center", gap: ".75rem" }}>
-                  <span className="mini-icon" style={{ marginBottom: 0 }}><Icon name="location" /></span>
-                  <strong>View Map Location</strong>
+          <SlideIn direction="left">
+            <article className="service-card">
+              <h2 className="headline" style={{ fontSize: "2.5rem" }}>Send an Enquiry</h2>
+              <form className="contact-form" style={{ marginTop: "2rem" }}>
+                <div className="contact-form__row">
+                  <div className="field">
+                    <label htmlFor="name">Full Name</label>
+                    <input
+                      id="name"
+                      name="name"
+                      type="text"
+                      placeholder="John Doe"
+                      autoComplete="name"
+                      required
+                    />
+                  </div>
+                  <div className="field">
+                    <label htmlFor="phone">Phone Number</label>
+                    <input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      placeholder="+91 000 000 0000"
+                      autoComplete="tel"
+                      inputMode="tel"
+                      required
+                    />
+                  </div>
                 </div>
-              </a>
-            </div>
-          </div>
+
+                <div className="field">
+                  <label htmlFor="email">Email Address</label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="john@enterprise.com"
+                    autoComplete="email"
+                    required
+                  />
+                </div>
+
+                <div className="field">
+                  <label htmlFor="service">Service Interest</label>
+                  <select id="service" name="service" defaultValue="" required>
+                    <option value="" disabled>Select a Service</option>
+                    <option>Stone Crusher Operations</option>
+                    <option>Transport Logistics</option>
+                    <option>Material Supply</option>
+                    <option>Site Excavation</option>
+                    <option>Construction Consultation</option>
+                    <option>Safety Auditing</option>
+                  </select>
+                </div>
+
+                <div className="field">
+                  <label htmlFor="message">Message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="5"
+                    placeholder="Tell us about your project requirements..."
+                    autoComplete="off"
+                    required
+                  />
+                </div>
+
+                <button type="submit" className="button" style={{ width: "100%", marginTop: ".5rem" }}>
+                  Submit Enquiry
+                </button>
+              </form>
+            </article>
+          </SlideIn>
+
+          <SlideIn direction="right">
+            <StaggerContainer style={{ display: "grid", gap: "1.25rem" }}>
+              <StaggerItem>
+                <article className="contact-card panel">
+                  <div className="mini-icon"><Icon name="location" /></div>
+                  <h3 style={{ marginTop: 0 }}>Our Headquarter</h3>
+                  <p>
+                    {siteConfig.address.street}, {siteConfig.address.city}, {siteConfig.address.region} {siteConfig.address.postalCode}
+                  </p>
+                </article>
+              </StaggerItem>
+
+              <StaggerItem>
+                <article className="contact-card panel">
+                  <div className="mini-icon"><Icon name="call" /></div>
+                  <h3 style={{ marginTop: 0 }}>Phone &amp; Support</h3>
+                  <p><a href={`tel:${siteConfig.phone.replace(/\s+/g, "")}`}>{siteConfig.phone}</a></p>
+                  <p>{siteConfig.workingHours}</p>
+                  <div className="mini-icon" style={{ marginTop: "1rem" }}><Icon name="mail" /></div>
+                  <h3>Email</h3>
+                  <p><a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></p>
+                </article>
+              </StaggerItem>
+
+              <StaggerItem>
+                <a className="contact-card whatsapp-card" href={`https://wa.me/${siteConfig.whatsapp}`} aria-label="Chat with us on WhatsApp">
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "1rem" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+                      <span className="mini-icon" style={{ background: "rgba(255,255,255,.14)", color: "white", marginBottom: 0 }}>
+                        <Icon name="chat" />
+                      </span>
+                      <strong>Chat on WhatsApp</strong>
+                    </div>
+                    <Icon name="arrow" />
+                  </div>
+                </a>
+              </StaggerItem>
+
+              <StaggerItem>
+                <div className="map-card">
+                  <iframe
+                    title="Trimurti Enterprise Location"
+                    src="https://www.google.com/maps?q=19.174911,72.876675&output=embed"
+                    width="100%"
+                    height="320"
+                    style={{ border: 0, borderRadius: "24px" }}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    allowFullScreen
+                  />
+                  <a
+                    className="map-card__badge contact-card"
+                    href="https://www.google.com/maps/place/19%C2%B010'29.7%22N+72%C2%B052'36.0%22E/@19.174911,72.876675,17z/data=!3m1!4b1!4m4!3m3!8m2!3d19.174911!4d72.876675!18m1!1e1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <div style={{ display: "flex", alignItems: "center", gap: ".75rem" }}>
+                      <span className="mini-icon" style={{ marginBottom: 0 }}><Icon name="location" /></span>
+                      <strong>View Map Location</strong>
+                    </div>
+                  </a>
+                </div>
+              </StaggerItem>
+            </StaggerContainer>
+          </SlideIn>
         </div>
       </section>
+
       <section className="section section--soft">
         <div className="container">
-          <div className="card-grid">
-            {contactStats.map((stat) => {
-              const { number, suffix } = parseStatValue(stat.value);
+          <FadeIn>
+            <StaggerContainer className="card-grid">
+              {contactStats.map((stat) => {
+                const { number, suffix } = parseStatValue(stat.value);
 
-              return (
-                <div key={stat.label} className="stat-card" style={{ color: "var(--foreground)" }}>
-                  <strong style={{ color: "var(--primary)" }}>
-                    <CountUp from={0} to={number} duration={1.8} separator="," suffix={suffix} showSuffixOnEnd className="stat-card__count" />
-                  </strong>
-                  <span style={{ color: "#757681" }}>{stat.label}</span>
-                </div>
-              );
-            })}
-          </div>
+                return (
+                  <StaggerItem key={stat.label} className="stat-card" style={{ color: "var(--foreground)" }}>
+                    <strong style={{ color: "var(--primary)" }}>
+                      <CountUp
+                        from={0}
+                        to={number}
+                        duration={1.8}
+                        separator=","
+                        suffix={suffix}
+                        showSuffixOnEnd
+                        className="stat-card__count"
+                      />
+                    </strong>
+                    <span style={{ color: "#757681" }}>{stat.label}</span>
+                  </StaggerItem>
+                );
+              })}
+            </StaggerContainer>
+          </FadeIn>
         </div>
       </section>
+
       <WhatsAppFloat />
     </>
   );
 }
-

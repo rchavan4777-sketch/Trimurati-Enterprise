@@ -53,7 +53,7 @@ export default function AboutPage() {
               <strong>
                 <CountUp
                   from={0}
-                  to={25}
+                  to={20}
                   duration={1.8}
                   suffix="+"
                   showSuffixOnEnd
@@ -127,8 +127,7 @@ export default function AboutPage() {
           <StaggerContainer className="values-grid">
             {values.map((item) => (
               <StaggerItem key={item.title} className="value-card">
-                <div className="mini-icon"><Icon name={item.icon} /></div>
-                <h3 style={{ fontFamily: "var(--font-display)", fontStyle: "italic", marginTop: 0 }}>{item.title}</h3>
+                <div className="value-card__head"><div className="mini-icon"><Icon name={item.icon} /></div><h3 style={{ fontFamily: "var(--font-display)", fontStyle: "italic", marginTop: 0 }}>{item.title}</h3></div>
                 <p>{item.text}</p>
               </StaggerItem>
             ))}
@@ -149,4 +148,6 @@ export default function AboutPage() {
     </>
   );
 }
+
+
 

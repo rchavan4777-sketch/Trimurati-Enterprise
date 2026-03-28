@@ -5,11 +5,6 @@ import { MediaFrame } from "@/components/media";
 import { StructuredData } from "@/components/structured-data";
 import { services, siteConfig } from "@/data/site";
 
-const INFRASTRUCTURE_VIDEO = {
-  id: "QUT1VHiLmmI",
-  watchUrl: "https://www.youtube.com/watch?v=QUT1VHiLmmI"
-};
-
 const SERVICE_LOCAL_IMAGES = {
   "hard-rock-control-blasting": [
     "/images/services/Hard Rock Control Blasting1.jpeg",
@@ -93,7 +88,6 @@ export default async function ServiceDetailPage({ params }) {
   const scrollingImages = baseStripImages.length
     ? [...baseStripImages, ...baseStripImages]
     : [];
-  const videoEmbedUrl = `https://www.youtube-nocookie.com/embed/${INFRASTRUCTURE_VIDEO.id}`;
 
   const schema = {
     "@context": "https://schema.org",
@@ -148,34 +142,6 @@ export default async function ServiceDetailPage({ params }) {
 
       <section className="section">
         <div className="container">
-          <div className="service-video-card">
-            <div className="service-video-copy">
-              <span className="eyebrow">Project Video</span>
-              <h2 className="headline" style={{ marginTop: "1rem" }}>
-                Watch {service.name} in Action
-              </h2>
-              <p className="lede" style={{ marginTop: "1rem" }}>
-                Get a visual look at our on-site execution quality, equipment standards,
-                and safety-first work approach across infrastructure operations.
-              </p>
-              <div style={{ marginTop: "1.25rem" }}>
-                <Link href={INFRASTRUCTURE_VIDEO.watchUrl} className="button-secondary" target="_blank" rel="noopener noreferrer">
-                  Open on YouTube
-                </Link>
-              </div>
-            </div>
-            <div className="service-video-embed">
-              <iframe
-                src={videoEmbedUrl}
-                title={`${service.name} video`}
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-              />
-            </div>
-          </div>
-
           <span className="eyebrow">Technical Overview</span>
           <h2 className="headline" style={{ marginTop: "1rem" }}>
             What it is &amp; How it works
@@ -308,3 +274,4 @@ export default async function ServiceDetailPage({ params }) {
     </>
   );
 }
+
