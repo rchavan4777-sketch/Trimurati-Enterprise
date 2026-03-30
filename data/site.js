@@ -1,4 +1,4 @@
-export const siteConfig = {
+﻿export const siteConfig = {
   name: "Trimurti Enterprise",
   url: "https://www.trimurtienterprise.com",
   description:
@@ -14,8 +14,8 @@ export const siteConfig = {
     postalCode: "40065"
   },
   socials: [
-    { label: "LinkedIn", href: "https://www.linkedin.com" },
-    { label: "Instagram", href: "https://www.instagram.com" }
+    { label: "Instagram", href: "https://www.instagram.com/trimurti_enterprises47?igsh=aWI3aWJ2ZzlibTA3" },
+    { label: "YouTube", href: "https://youtube.com/@trimurtienterprisespvt?si=WkX31CyUNzvHkNLB" }
   ]
 };
 
@@ -40,22 +40,11 @@ export const navigation = [
       },
       {
         label: "Trimurti Stone Crusher",
-        href: "/services/materials/trimurti-stone-crusher",
-        children: [
-          { label: "20 mm", href: "/services/materials/stone-crusher-20-mm" },
-          { label: "M.Sand", href: "/services/materials/stone-crusher-m-sand" },
-          { label: "Plaster Sand", href: "/services/materials/stone-crusher-plaster-sand" }
-        ]
+        href: "/services/materials/trimurti-stone-crusher"
       },
       {
         label: "Trimurti Transport",
-        href: "/services/materials/trimurti-transport",
-        children: [
-          { label: "Rubble", href: "/services/materials/transport-rubble" },
-          { label: "Metal 10/20", href: "/services/materials/transport-metal-10-20" },
-          { label: "M.Sand", href: "/services/materials/transport-m-sand" },
-          { label: "Plaster Sand", href: "/services/materials/transport-plaster-sand" }
-        ]
+        href: "/services/materials/trimurti-transport"
       }
     ]
   },
@@ -76,45 +65,55 @@ export const materialServicePages = [
       "Tested quality for structural reliability"
     ],
     children: [
-      { label: "20 mm", href: "/services/materials/stone-crusher-20-mm" },
-      { label: "M.Sand", href: "/services/materials/stone-crusher-m-sand" },
-      { label: "Plaster Sand", href: "/services/materials/stone-crusher-plaster-sand" }
-    ]
-  },
-  {
-    slug: "stone-crusher-20-mm",
-    title: "20 mm Aggregate",
-    group: "Trimurti Stone Crusher",
-    description: "High-strength 20 mm graded aggregate for concrete works, foundations, and heavy-load structural applications.",
-    icon: "foundation",
-    points: [
-      "Uniform particle size distribution",
-      "Suitable for RCC and structural concrete",
-      "Reliable supply for large project demand"
-    ]
-  },
-  {
-    slug: "stone-crusher-m-sand",
-    title: "M.Sand",
-    group: "Trimurti Stone Crusher",
-    description: "Manufactured sand processed for consistent grading, clean texture, and dependable construction performance.",
-    icon: "arch",
-    points: [
-      "Controlled fines for workability",
-      "Ideal for block work and concrete mix",
-      "Clean and quality-checked source"
-    ]
-  },
-  {
-    slug: "stone-crusher-plaster-sand",
-    title: "Plaster Sand",
-    group: "Trimurti Stone Crusher",
-    description: "Fine, well-graded plaster sand for smooth wall finishing and high-quality surface texture.",
-    icon: "spark",
-    points: [
-      "Fine texture for smooth finish",
-      "Low impurity and dust control",
-      "Consistent quality across batches"
+      { label: "20 mm", href: "/services/materials/trimurti-stone-crusher#stone-crusher-20-mm" },
+      { label: "M.Sand", href: "/services/materials/trimurti-stone-crusher#stone-crusher-m-sand" },
+      { label: "Plaster Sand", href: "/services/materials/trimurti-stone-crusher#stone-crusher-plaster-sand" }
+    ],
+    subServices: [
+      {
+        slug: "stone-crusher-20-mm",
+        title: "20 mm Aggregate",
+        description: "High-strength 20 mm graded aggregate for concrete works, foundations, and heavy-load structural applications.",
+        icon: "foundation",
+        points: [
+          "Uniform particle size distribution",
+          "Suitable for RCC and structural concrete",
+          "Reliable supply for large project demand"
+        ],
+        images: [
+          "/images/services/M. SAND1.jpeg"
+        ]
+      },
+      {
+        slug: "stone-crusher-m-sand",
+        title: "M.Sand",
+        description: "Manufactured sand processed for consistent grading, clean texture, and dependable construction performance.",
+        icon: "arch",
+        points: [
+          "Controlled fines for workability",
+          "Ideal for block work and concrete mix",
+          "Clean and quality-checked source"
+        ],
+        images: [
+          "/images/services/M. SAND1.jpeg",
+          "/images/services/M. SAND2.jpeg",
+          "/images/services/M. SAND3.jpeg"
+        ]
+      },
+      {
+        slug: "stone-crusher-plaster-sand",
+        title: "Plaster Sand",
+        description: "Fine, well-graded plaster sand for smooth wall finishing and high-quality surface texture.",
+        icon: "spark",
+        points: [
+          "Fine texture for smooth finish",
+          "Low impurity and dust control",
+          "Consistent quality across batches"
+        ],
+        images: [
+          "/images/services/M. SAND2.jpeg"
+        ]
+      }
     ]
   },
   {
@@ -129,58 +128,70 @@ export const materialServicePages = [
       "Reliable dispatch and delivery tracking"
     ],
     children: [
-      { label: "Rubble", href: "/services/materials/transport-rubble" },
-      { label: "Metal 10/20", href: "/services/materials/transport-metal-10-20" },
-      { label: "M.Sand", href: "/services/materials/transport-m-sand" },
-      { label: "Plaster Sand", href: "/services/materials/transport-plaster-sand" }
-    ]
-  },
-  {
-    slug: "transport-rubble",
-    title: "Rubble Transport",
-    group: "Trimurti Transport",
-    description: "Safe and timely rubble movement from excavation sites for disposal, filling, or reuse requirements.",
-    icon: "truck",
-    points: [
-      "Site-to-site rubble movement",
-      "Scheduled pickup and dispatch",
-      "Efficient turnaround for active sites"
-    ]
-  },
-  {
-    slug: "transport-metal-10-20",
-    title: "Metal 10/20 Transport",
-    group: "Trimurti Transport",
-    description: "Bulk haulage of 10/20 metal for concrete and civil works with dependable delivery windows.",
-    icon: "foundation",
-    points: [
-      "Bulk transport for metal aggregates",
-      "Timely delivery to batching and site points",
-      "Reliable logistics planning"
-    ]
-  },
-  {
-    slug: "transport-m-sand",
-    title: "M.Sand Transport",
-    group: "Trimurti Transport",
-    description: "Consistent and on-time M.Sand logistics to maintain uninterrupted project execution.",
-    icon: "arch",
-    points: [
-      "Clean loading and careful handling",
-      "Daily or on-demand dispatch",
-      "Optimized routes for fast supply"
-    ]
-  },
-  {
-    slug: "transport-plaster-sand",
-    title: "Plaster Sand Transport",
-    group: "Trimurti Transport",
-    description: "Specialized transport for plaster sand with controlled handling to preserve material quality.",
-    icon: "spark",
-    points: [
-      "Loss-minimized transport handling",
-      "Reliable delivery commitments",
-      "Support for interior and finishing phases"
+      { label: "Rubble", href: "/services/materials/trimurti-transport#transport-rubble" },
+      { label: "Metal 10/20", href: "/services/materials/trimurti-transport#transport-metal-10-20" },
+      { label: "M.Sand", href: "/services/materials/trimurti-transport#transport-m-sand" },
+      { label: "Plaster Sand", href: "/services/materials/trimurti-transport#transport-plaster-sand" }
+    ],
+    subServices: [
+      {
+        slug: "transport-rubble",
+        title: "Rubble Transport",
+        description: "Safe and timely rubble movement from excavation sites for disposal, filling, or reuse requirements.",
+        icon: "truck",
+        points: [
+          "Site-to-site rubble movement",
+          "Scheduled pickup and dispatch",
+          "Efficient turnaround for active sites"
+        ],
+        images: [
+          "/images/services/Trimurti Transport1.jpeg",
+          "/images/services/Trimurti Transport2.jpeg"
+        ]
+      },
+      {
+        slug: "transport-metal-10-20",
+        title: "Metal 10/20 Transport",
+        description: "Bulk haulage of 10/20 metal for concrete and civil works with dependable delivery windows.",
+        icon: "foundation",
+        points: [
+          "Bulk transport for metal aggregates",
+          "Timely delivery to batching and site points",
+          "Reliable logistics planning"
+        ],
+        images: [
+          "/images/services/Trimurti Transport3.jpeg"
+        ]
+      },
+      {
+        slug: "transport-m-sand",
+        title: "M.Sand Transport",
+        description: "Consistent and on-time M.Sand logistics to maintain uninterrupted project execution.",
+        icon: "arch",
+        points: [
+          "Clean loading and careful handling",
+          "Daily or on-demand dispatch",
+          "Optimized routes for fast supply"
+        ],
+        images: [
+          "/images/services/Trimurti Transport4.jpeg",
+          "/images/services/Trimurti Transport5.jpeg"
+        ]
+      },
+      {
+        slug: "transport-plaster-sand",
+        title: "Plaster Sand Transport",
+        description: "Specialized transport for plaster sand with controlled handling to preserve material quality.",
+        icon: "spark",
+        points: [
+          "Loss-minimized transport handling",
+          "Reliable delivery commitments",
+          "Support for interior and finishing phases"
+        ],
+        images: [
+          "/images/services/Trimurti Transport6.jpeg"
+        ]
+      }
     ]
   }
 ];
@@ -433,6 +444,8 @@ export const homeImages = {
   transport:
     "https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=1200&q=80"
 };
+
+
 
 
 

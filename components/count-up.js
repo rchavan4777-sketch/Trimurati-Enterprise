@@ -13,10 +13,13 @@ export default function CountUp({
   startWhen = true,
   startCounting,
   separator = "",
+  suffix = "",
+  showSuffixOnEnd = false,
   onStart,
   onEnd
 }) {
   const ref = useRef(null);
+  const suffixVisibleRef = useRef(!showSuffixOnEnd);
   const motionValue = useMotionValue(direction === "down" ? to : from);
 
   const damping = 20 + 40 * (1 / duration);
@@ -63,10 +66,13 @@ export default function CountUp({
   );
 
   useEffect(() => {
+    suffixVisibleRef.current = !showSuffixOnEnd;
+
     if (ref.current) {
-      ref.current.textContent = formatValue(direction === "down" ? to : from);
+      const startValue = formatValue(direction === "down" ? to : from);
+      ref.current.textContent = `${startValue}${suffixVisibleRef.current ? suffix : ""}`;
     }
-  }, [from, to, direction, formatValue]);
+  }, [from, to, direction, formatValue, suffix, showSuffixOnEnd]);
 
   useEffect(() => {
     if (isInView && shouldStart) {
@@ -77,6 +83,12 @@ export default function CountUp({
       }, delay * 1000);
 
       const durationTimeoutId = setTimeout(() => {
+        suffixVisibleRef.current = true;
+
+        if (ref.current) {
+          ref.current.textContent = `${formatValue(motionValue.get())}${suffix}`;
+        }
+
         if (typeof onEnd === "function") onEnd();
       }, delay * 1000 + duration * 1000);
 
@@ -85,17 +97,30 @@ export default function CountUp({
         clearTimeout(durationTimeoutId);
       };
     }
-  }, [isInView, shouldStart, motionValue, direction, from, to, delay, onStart, onEnd, duration]);
+  }, [
+    isInView,
+    shouldStart,
+    motionValue,
+    direction,
+    from,
+    to,
+    delay,
+    onStart,
+    onEnd,
+    duration,
+    formatValue,
+    suffix
+  ]);
 
   useEffect(() => {
     const unsubscribe = springValue.on("change", (latest) => {
       if (ref.current) {
-        ref.current.textContent = formatValue(latest);
+        ref.current.textContent = `${formatValue(latest)}${suffixVisibleRef.current ? suffix : ""}`;
       }
     });
 
     return () => unsubscribe();
-  }, [springValue, formatValue]);
+  }, [springValue, formatValue, suffix]);
 
   return <span className={className} ref={ref} />;
 }

@@ -1,4 +1,4 @@
-export function Icon({ name }) {
+﻿export function Icon({ name }) {
   const common = {
     viewBox: "0 0 24 24",
     fill: "none",
@@ -39,9 +39,13 @@ export function Icon({ name }) {
     arrow: <><path d="M5 12h14" /><path d="M13 6l6 6-6 6" /></>,
     linkedin: <><path d="M7 9v8" /><path d="M7 5h.01" /><path d="M12 9v8" /><path d="M12 12a3 3 0 0 1 6 0v5" /></>,
     instagram: <><rect x="4" y="4" width="16" height="16" rx="4" /><circle cx="12" cy="12" r="3.5" /><path d="M17 7h.01" /></>
-  };
+  ,
+    youtube: <><rect x="3" y="6" width="18" height="12" rx="3" /><path d="M10 9.5l5 2.5-5 2.5z" /></> };
 
   return <svg aria-hidden="true" {...common}>{icons[name] ?? icons.arch}</svg>;
 }
+
+
+
 
 

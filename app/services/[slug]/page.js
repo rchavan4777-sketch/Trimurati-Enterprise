@@ -1,14 +1,11 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import BorderGlow from "@/components/border-glow";
 import { Icon } from "@/components/icons";
 import { MediaFrame } from "@/components/media";
+import { FadeIn, SlideIn, StaggerContainer, StaggerItem } from "@/components/motion";
 import { StructuredData } from "@/components/structured-data";
 import { services, siteConfig } from "@/data/site";
-
-const INFRASTRUCTURE_VIDEO = {
-  id: "QUT1VHiLmmI",
-  watchUrl: "https://www.youtube.com/watch?v=QUT1VHiLmmI"
-};
 
 const SERVICE_LOCAL_IMAGES = {
   "hard-rock-control-blasting": [
@@ -17,8 +14,7 @@ const SERVICE_LOCAL_IMAGES = {
     "/images/services/Hard Rock Control Blasting3.jpeg",
     "/images/services/Hard Rock Control Blasting4.jpeg",
     "/images/services/Hard Rock Control Blasting5.jpeg",
-    "/images/services/Hard Rock Control Blasting6.png",
-    "/images/services/Hard Rock Control Blasting7.png"
+    "/images/services/Hard Rock Control Blasting6.png"
   ],
   shotcrete: [
     "/images/services/SHOTCRETE1.jpeg",
@@ -93,7 +89,6 @@ export default async function ServiceDetailPage({ params }) {
   const scrollingImages = baseStripImages.length
     ? [...baseStripImages, ...baseStripImages]
     : [];
-  const videoEmbedUrl = `https://www.youtube-nocookie.com/embed/${INFRASTRUCTURE_VIDEO.id}`;
 
   const schema = {
     "@context": "https://schema.org",
@@ -121,61 +116,35 @@ export default async function ServiceDetailPage({ params }) {
         }}
       >
         <div className="container hero-grid" style={{ minHeight: "34rem" }}>
-          <div>
-            <span
-              className="eyebrow"
-              style={{
-                color: "white",
-                background: "rgba(255,255,255,.12)",
-                padding: ".5rem .9rem",
-                borderRadius: "999px"
-              }}
-            >
-              {richService.heroTag}
-            </span>
-            <h1 className="display" style={{ color: "white", marginTop: "1rem" }}>
-              {service.name}
-            </h1>
-            <p className="lede" style={{ color: "rgba(255,255,255,.82)", marginTop: "1.5rem" }}>
-              {service.short}
-            </p>
-          </div>
-          <div className="hero-art">
+          <SlideIn direction="left">
+            <div>
+              <span
+                className="eyebrow"
+                style={{
+                  color: "white",
+                  background: "rgba(255,255,255,.12)",
+                  padding: ".5rem .9rem",
+                  borderRadius: "999px"
+                }}
+              >
+                {richService.heroTag}
+              </span>
+              <h1 className="display" style={{ color: "white", marginTop: "1rem" }}>
+                {service.name}
+              </h1>
+              <p className="lede" style={{ color: "rgba(255,255,255,.82)", marginTop: "1.5rem" }}>
+                {service.short}
+              </p>
+            </div>
+          </SlideIn>
+          <SlideIn direction="right" className="hero-art">
             <MediaFrame src={heroImage} alt={service.name} className="hero-frame" priority />
-          </div>
+          </SlideIn>
         </div>
       </section>
 
       <section className="section">
-        <div className="container">
-          <div className="service-video-card">
-            <div className="service-video-copy">
-              <span className="eyebrow">Project Video</span>
-              <h2 className="headline" style={{ marginTop: "1rem" }}>
-                Watch {service.name} in Action
-              </h2>
-              <p className="lede" style={{ marginTop: "1rem" }}>
-                Get a visual look at our on-site execution quality, equipment standards,
-                and safety-first work approach across infrastructure operations.
-              </p>
-              <div style={{ marginTop: "1.25rem" }}>
-                <Link href={INFRASTRUCTURE_VIDEO.watchUrl} className="button-secondary" target="_blank" rel="noopener noreferrer">
-                  Open on YouTube
-                </Link>
-              </div>
-            </div>
-            <div className="service-video-embed">
-              <iframe
-                src={videoEmbedUrl}
-                title={`${service.name} video`}
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-              />
-            </div>
-          </div>
-
+        <FadeIn className="container">
           <span className="eyebrow">Technical Overview</span>
           <h2 className="headline" style={{ marginTop: "1rem" }}>
             What it is &amp; How it works
@@ -208,103 +177,113 @@ export default async function ServiceDetailPage({ params }) {
               </div>
             </div>
           ) : null}
-        </div>
+        </FadeIn>
       </section>
 
       <section className="section section--soft">
         <div className="container">
-          <div className="section-heading center">
+          <FadeIn className="section-heading center">
             <span className="eyebrow">Advantage</span>
             <h2 className="headline" style={{ fontStyle: "italic", marginTop: "1rem" }}>
               Key Strategic Benefits
             </h2>
-          </div>
-          <div className="feature-grid">
+          </FadeIn>
+          <StaggerContainer className="feature-grid">
             {richService.benefits.map((benefit, index) => (
-              <article key={benefit.title} className="benefit-card">
-                <div className="mini-icon">
-                  <Icon name={index === 0 ? "shield" : index === 1 ? "arch" : "speed"} />
-                </div>
-                <h3>{benefit.title}</h3>
-                <p>{benefit.text}</p>
-              </article>
+              <StaggerItem key={benefit.title}>
+                <BorderGlow innerClassName="benefit-card" backgroundColor="var(--surface-card)" borderRadius={24}>
+                  <div className="mini-icon">
+                    <Icon name={index === 0 ? "shield" : index === 1 ? "arch" : "speed"} />
+                  </div>
+                  <h3>{benefit.title}</h3>
+                  <p>{benefit.text}</p>
+                </BorderGlow>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
       <section className="section">
         <div className="container split-grid">
-          <div className="method-card">
-            <h2 className="headline">Our Engineering Methodology</h2>
-            <p style={{ marginTop: "1rem" }}>
-              From initial survey to final clearance, we follow a rigorous four-step
-              execution model rooted in control, documentation, and repeatable safety.
-            </p>
-            <div className="panel" style={{ marginTop: "1.5rem" }}>
-              <strong
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontSize: "3rem",
-                  color: "var(--primary)",
-                  display: "block"
-                }}
-              >
-                500+
-              </strong>
-              <span className="eyebrow">Successful Projects</span>
-            </div>
-          </div>
+          <SlideIn direction="left">
+            <BorderGlow innerClassName="method-card" backgroundColor="var(--surface-card)" borderRadius={24}>
+              <h2 className="headline">Our Engineering Methodology</h2>
+              <p style={{ marginTop: "1rem" }}>
+                From initial survey to final clearance, we follow a rigorous four-step
+                execution model rooted in control, documentation, and repeatable safety.
+              </p>
+              <div className="panel" style={{ marginTop: "1.5rem" }}>
+                <strong
+                  style={{
+                    fontFamily: "var(--font-display)",
+                    fontSize: "3rem",
+                    color: "var(--primary)",
+                    display: "block"
+                  }}
+                >
+                  250+
+                </strong>
+                <span className="eyebrow">Successful Projects</span>
+              </div>
+            </BorderGlow>
+          </SlideIn>
 
-          <div className="method-grid">
+          <StaggerContainer className="method-grid">
             {richService.methodology.map((item) => (
-              <article key={item.step} className="method-item">
-                <strong>{item.step}</strong>
-                <h3 style={{ marginTop: 0 }}>{item.title}</h3>
-                <p>{item.text}</p>
-              </article>
+              <StaggerItem key={item.step}>
+                <BorderGlow innerClassName="method-item" backgroundColor="var(--surface-card)" borderRadius={20}>
+                  <strong>{item.step}</strong>
+                  <h3 style={{ marginTop: 0 }}>{item.title}</h3>
+                  <p>{item.text}</p>
+                </BorderGlow>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
       <section className="section">
         <div className="container">
-          <div
-            className="cta-panel"
-            style={{
-              textAlign: "center",
-              backgroundImage: ctaImage
-                ? `linear-gradient(135deg, rgba(132,153,224,.92), rgba(70,91,158,.78)), url(${ctaImage})`
-                : undefined,
-              backgroundSize: ctaImage ? "cover" : undefined,
-              backgroundPosition: ctaImage ? "center" : undefined
-            }}
-          >
-            <h2 className="headline">Ready to Start Your Infrastructure Journey?</h2>
-            <p style={{ maxWidth: "42rem", margin: "1rem auto 0", lineHeight: 1.8 }}>
-              Consult with our engineering experts for a tailored blast design,
-              geological survey, and execution plan aligned with your site.
-            </p>
+          <FadeIn>
             <div
+              className="cta-panel"
               style={{
-                display: "flex",
-                gap: "1rem",
-                justifyContent: "center",
-                flexWrap: "wrap",
-                marginTop: "2rem"
+                textAlign: "center",
+                backgroundImage: ctaImage
+                  ? `linear-gradient(135deg, rgba(132,153,224,.92), rgba(70,91,158,.78)), url(${ctaImage})`
+                  : undefined,
+                backgroundSize: ctaImage ? "cover" : undefined,
+                backgroundPosition: ctaImage ? "center" : undefined
               }}
             >
-              <Link href="/contact" className="button">
-                Request Expert Consultation
-              </Link>
-              <Link href="/services" className="button-secondary">
-                View More Services
-              </Link>
+              <h2 className="headline">Ready to Start Your Infrastructure Journey?</h2>
+              <p style={{ maxWidth: "42rem", margin: "1rem auto 0", lineHeight: 1.8 }}>
+                Consult with our engineering experts for a tailored blast design,
+                geological survey, and execution plan aligned with your site.
+              </p>
+              <div
+                style={{
+                  display: "flex",
+                  gap: "1rem",
+                  justifyContent: "center",
+                  flexWrap: "wrap",
+                  marginTop: "2rem"
+                }}
+              >
+                <Link href="/contact" className="button">
+                  Request Expert Consultation
+                </Link>
+                <Link href="/services" className="button-secondary">
+                  View More Services
+                </Link>
+              </div>
             </div>
-          </div>
+          </FadeIn>
         </div>
       </section>
     </>
   );
 }
+
+

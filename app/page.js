@@ -1,11 +1,27 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import Link from "next/link";
+import CountUp from "@/components/count-up";
 import { Icon } from "@/components/icons";
 import { MediaFrame } from "@/components/media";
 import { StructuredData } from "@/components/structured-data";
 import { WhatsAppFloat } from "@/components/whatsapp-float";
 import { clients, featuredServices, homeImages, homeStats, siteConfig } from "@/data/site";
 import { FadeIn, SlideIn, StaggerContainer, StaggerItem } from "@/components/motion";
+import BorderGlow from "@/components/border-glow";
+
+const parseStatValue = (value) => {
+  const clean = value.replace(/,/g, "");
+  const match = clean.match(/^([+-]?\d+(?:\.\d+)?)(.*)$/);
+
+  if (!match) {
+    return { number: 0, suffix: value };
+  }
+
+  return {
+    number: Number(match[1]),
+    suffix: match[2]
+  };
+};
 
 export default function HomePage() {
   const faqs = [
@@ -73,12 +89,26 @@ export default function HomePage() {
       <section className="section stats-band">
         <FadeIn className="container">
           <StaggerContainer className="card-grid">
-            {homeStats.map((stat) => (
-              <StaggerItem key={stat.label} className="stat-card">
-                <strong>{stat.value}</strong>
-                <span>{stat.label}</span>
-              </StaggerItem>
-            ))}
+            {homeStats.map((stat) => {
+              const { number, suffix } = parseStatValue(stat.value);
+
+              return (
+                <StaggerItem key={stat.label} className="stat-card">
+                  <strong>
+                    <CountUp
+                      from={0}
+                      to={number}
+                      duration={1.8}
+                      separator=","
+                      suffix={suffix}
+                      showSuffixOnEnd
+                      className="stat-card__count"
+                    />
+                  </strong>
+                  <span>{stat.label}</span>
+                </StaggerItem>
+              );
+            })}
           </StaggerContainer>
         </FadeIn>
       </section>
@@ -92,10 +122,12 @@ export default function HomePage() {
           </FadeIn>
           <StaggerContainer className="card-grid">
             {featuredServices.map((service) => (
-              <StaggerItem key={service.title} className="service-card">
-                <div className="service-icon"><Icon name={service.icon} /></div>
-                <h3>{service.title}</h3>
-                <p>{service.text}</p>
+              <StaggerItem key={service.title}>
+                <BorderGlow innerClassName="service-card" backgroundColor="var(--surface-card)" borderRadius={24} glowRadius={28}>
+                  <div className="service-icon"><Icon name={service.icon} /></div>
+                  <h3>{service.title}</h3>
+                  <p>{service.text}</p>
+                </BorderGlow>
               </StaggerItem>
             ))}
           </StaggerContainer>
