@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import BorderGlow from "@/components/border-glow";
 import { Icon } from "@/components/icons";
@@ -14,8 +14,7 @@ const SERVICE_LOCAL_IMAGES = {
     "/images/services/Hard Rock Control Blasting3.jpeg",
     "/images/services/Hard Rock Control Blasting4.jpeg",
     "/images/services/Hard Rock Control Blasting5.jpeg",
-    "/images/services/Hard Rock Control Blasting6.png",
-    "/images/services/Hard Rock Control Blasting7.png"
+    "/images/services/Hard Rock Control Blasting6.png"
   ],
   shotcrete: [
     "/images/services/SHOTCRETE1.jpeg",
@@ -286,4 +285,5 @@ export default async function ServiceDetailPage({ params }) {
     </>
   );
 }
+
 
