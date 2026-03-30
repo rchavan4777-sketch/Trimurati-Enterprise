@@ -83,6 +83,61 @@ button, input, select, textarea { font: inherit; }
 .hero-frame, .image-frame { position: relative; overflow: hidden; border-radius: 28px; box-shadow: var(--shadow); min-height: 28rem; }
 .hero-frame img, .image-frame img, .team-card img, .resource-card img { width: 100%; height: 100%; object-fit: cover; }
 .hero-frame::after, .image-frame::after { content: ""; position: absolute; inset: 0; background: linear-gradient(140deg, rgba(70,91,158,.14), transparent 55%); pointer-events: none; }
+.about-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 38rem;
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+.about-hero__bg,
+.about-hero__overlay {
+  position: absolute;
+  inset: 0;
+}
+.about-hero__bg {
+  background-size: cover;
+  background-position: center;
+}
+.about-hero__overlay {
+  background:
+    linear-gradient(106deg, rgba(13,26,57,.58) 0%, rgba(13,26,57,.38) 48%, rgba(13,26,57,.18) 100%),
+    linear-gradient(180deg, rgba(13,26,57,.05) 0%, rgba(13,26,57,.2) 100%);
+}
+.about-hero__content {
+  position: relative;
+  z-index: 1;
+}
+.about-hero__content .eyebrow {
+  color: rgba(219,225,255,.95);
+}
+.about-hero__content .display {
+  color: #fff;
+  max-width: 52rem;
+}
+.about-hero__content .display em {
+  color: #afc0ff;
+}
+.about-hero__content .lede {
+  color: rgba(255,255,255,.9);
+}
+.about-hero__stat {
+  margin-top: 1.6rem;
+  width: fit-content;
+  padding: .85rem 1.15rem;
+  border-radius: 16px;
+  border: 1px solid rgba(219,225,255,.32);
+  background: rgba(250,248,255,.16);
+  backdrop-filter: blur(10px);
+}
+.about-hero__stat strong {
+  display: block;
+  font-family: var(--font-display), serif;
+  color: #fff;
+  font-size: clamp(2.2rem, 4vw, 2.8rem);
+  line-height: 1;
+}
 .floating-stat { position: absolute; left: -1.25rem; bottom: -1.5rem; background: rgba(255,255,255,.92); padding: 1.2rem 1.4rem; border-radius: 20px; box-shadow: var(--shadow-soft); border-top: 2px solid var(--primary-fixed); min-width: 180px; }
 .floating-stat strong { display: block; font-family: var(--font-display), serif; font-size: 2.3rem; color: var(--primary); }
 .stats-band { background: #0d1a39; color: white; }
@@ -374,6 +429,10 @@ button, input, select, textarea { font: inherit; }
 
 
 @media (max-width: 980px) {
+  .about-hero {
+    min-height: 34rem;
+  }
+
   .auto-strip__track {
     animation-duration: 20s;
   }
@@ -396,6 +455,19 @@ button, input, select, textarea { font: inherit; }
 }
 
 @media (max-width: 720px) {
+  .about-hero {
+    min-height: 30rem;
+    align-items: flex-end;
+  }
+
+  .about-hero__content {
+    padding-bottom: .25rem;
+  }
+
+  .about-hero__stat {
+    margin-top: 1.25rem;
+  }
+
   .client-card {
     width: min(14rem, 74vw);
     padding: .95rem;
