@@ -68,13 +68,16 @@ export default function HomePage() {
     <>
       <StructuredData data={schema} />
       <section className="section">
-        <div className="container hero-grid">
+        <div className="container hero-grid hero-grid--home">
           <SlideIn direction="left">
-            <span className="eyebrow">Infrastructure Excellence</span>
-            <h1 className="display">Building <em>Foundations.</em><br />Breaking Barriers.</h1>
+            <span className="eyebrow">Trimurti Enterprise</span>
+            <h1 className="display">Welcome to Our <em>Home.</em><br />Building Stronger Sites.</h1>
             <p className="lede" style={{ maxWidth: "38rem", marginTop: "1.5rem" }}>
-              Engineering India&apos;s tomorrow with precision raw materials and logistical mastery.
-              We bridge the gap between architectural vision and structural reality.
+              This is the home page of Trimurti Enterprise, where infrastructure materials,
+              transport strength, and precision execution come together for modern projects.
+            </p>
+            <p className="muted hero-intro-note">
+              From hard rock services to reliable supply and logistics, we help every project start strong and move forward with confidence.
             </p>
             <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginTop: "2rem" }}>
               <Link href="/services" className="button">Our Projects</Link>
@@ -82,7 +85,19 @@ export default function HomePage() {
             </div>
           </SlideIn>
           <SlideIn direction="right" className="hero-art">
-            <MediaFrame src={homeImages.hero} alt="Modern concrete building facade" className="hero-frame" priority />
+            <div className="hero-visual">
+              <MediaFrame
+                src={homeImages.hero}
+                alt="Trimurti Enterprise home page hero"
+                className="hero-frame hero-frame--home"
+                priority
+                sizes="(max-width: 980px) 100vw, 56vw"
+              />
+              <div className="hero-visual__badge">
+                <strong>Home Page</strong>
+                <span>Trimurti Enterprise overview</span>
+              </div>
+            </div>
           </SlideIn>
         </div>
       </section>

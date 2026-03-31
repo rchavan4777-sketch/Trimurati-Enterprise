@@ -41,7 +41,9 @@ const SERVICE_LOCAL_IMAGES = {
     "/images/services/ALL DIA ROCKBOLTS3.jpeg"
   ],
   "steel-fabric-wiremesh-fixing": [
-    "/images/services/FIXING OF STEEL FABRIC  WIREMESH1.jpeg"
+    "/images/services/FIXING OF STEEL FABRIC  WIREMESH1.jpeg",
+    "/images/services/FIXING OF STEEL FABRIC  WIREMESH2.jpeg",
+    "/images/services/FIXING OF STEEL FABRIC  WIREMESH3.jpeg"
   ]
 };
 

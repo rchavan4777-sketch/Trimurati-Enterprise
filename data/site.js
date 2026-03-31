@@ -437,8 +437,7 @@ export const mapImage =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuCPSxi9nnEz9CWZXIPFPDTIhG9vB538C6Q9DvlD4mhSpX9b0OJoJP9qlkNWyall8y5OvFrYi5Hh0LdeGkSkDGrdoAfeXWEjXN3VjTN3sw0R-KKKztyDPkq8kO3Yz8D0ueVXOe-SZHEZ4vzAcDU9KeEPfmJ1HJaf4XKoj0zlCDTwI2hotY0nFWAS0eAdeSMtb7Ei2Mu8qXOMNTS64fdGId3asevujjLe6oOPTD5R78yEVp4iOWA2c3Q4OjgxBtjoBraxJRNz2VJhk7k";
 
 export const homeImages = {
-  hero:
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuAdQx3BGq6SInZSlQ9SBhUYARNzBZgtCyKimG6ezDbl5J1SoJpYD5af-wHPr-SsaZREmTEouxVBJAiSuAEEE01oMlCpKX0bHhDY0RMG_NACdlFcfp4Cj7f_V0bQEDP6lx4bvP1jHcMT_nRX2OXJ_5e-OTHRlD1sfmLaQGnYGZl68Y2plpp60Qxl-YL2EYTwqcffECvIjJhKmVAAduUVGO_hPb904YTxpQKZvG-6O2QY09GWu-aVaTPcXR4NH7wFSG7IjnlaJGNlgtk",
+  hero: "/images/services/home.jpeg",
   crusher:
     "https://images.unsplash.com/photo-1605792657660-596af9009e82?auto=format&fit=crop&w=1200&q=80",
   transport:

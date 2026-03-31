@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import BorderGlow from "@/components/border-glow";
 import HeroImageCarousel from "@/components/hero-image-carousel";
@@ -84,9 +84,10 @@ const DIVISION_PAGE_CONFIG = {
 
 const MATERIAL_LOCAL_IMAGES = {
   "trimurti-stone-crusher": [
-    "/images/services/M. SAND1.jpeg",
-    "/images/services/M. SAND2.jpeg",
-    "/images/services/M. SAND3.jpeg"
+    "/images/services/Stone Crusher1.jpeg",
+    "/images/services/Stone Crusher2.jpeg",
+    "/images/services/Stone Crusher3.jpeg",
+    "/images/services/Stone Crusher4.jpeg"
   ],
   "trimurti-transport": [
     "/images/services/Trimurti Transport1.jpeg",
@@ -190,7 +191,7 @@ export default async function MaterialServicePage({ params }) {
 
           {heroImage ? (
             <SlideIn direction="right" delay={0.1}>
-              <div style={{ position: "relative", aspectRatio: "16 / 10" }}>
+              <div style={{ position: "relative", aspectRatio: "16 / 10", minHeight: "24rem" }}>
                 {localImages.length > 1 ? (
                   <HeroImageCarousel images={localImages} alt={service.title} />
                 ) : (
